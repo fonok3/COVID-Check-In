@@ -1,8 +1,9 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin
+package de.uni.hannover.hci.mi.team6.covidcheckin.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import de.uni.hannover.hci.mi.team6.covidcheckin.ui.main.MainFragment
+import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import de.uni.hannover.hci.mi.team6.covidcheckin.main.ui.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
