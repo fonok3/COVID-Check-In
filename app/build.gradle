@@ -26,10 +26,26 @@ android {
     flavorDimensions "Default"
     productFlavors {
         visitor {
-            applicationId "de.uni.hannover.hci.mi.team6.covidcheckin.visitor"
+            dimension "Default"
+            applicationIdSuffix ".visitor"
+            versionNameSuffix "-visitor"
         }
         restaurant {
-            applicationId "de.uni.hannover.hci.mi.team6.covidcheckin.restaurant"
+            dimension "Default"
+            applicationIdSuffix ".restaurant"
+            versionNameSuffix "-restaurant"
+        }
+    }
+    sourceSets {
+        restaurant {
+            res {
+                srcDirs 'src/restaurant/res'
+            }
+        }
+        visitor {
+            res {
+                srcDirs 'src/visitor/res'
+            }
         }
     }
 
