@@ -23,6 +23,16 @@ android {
         }
     }
 
+    flavorDimensions "Default"
+    productFlavors {
+        visitor {
+            applicationId "de.uni.hannover.hci.mi.team6.covidcheckin.visitor"
+        }
+        restaurant {
+            applicationId "de.uni.hannover.hci.mi.team6.covidcheckin.restaurant"
+        }
+    }
+
 }
 
 dependencies {
