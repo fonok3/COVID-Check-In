@@ -23,6 +23,32 @@ android {
         }
     }
 
+    flavorDimensions "Default"
+    productFlavors {
+        visitor {
+            dimension "Default"
+            applicationIdSuffix ".visitor"
+            versionNameSuffix "-visitor"
+        }
+        restaurant {
+            dimension "Default"
+            applicationIdSuffix ".restaurant"
+            versionNameSuffix "-restaurant"
+        }
+    }
+    sourceSets {
+        restaurant {
+            res {
+                srcDirs 'src/restaurant/res'
+            }
+        }
+        visitor {
+            res {
+                srcDirs 'src/visitor/res'
+            }
+        }
+    }
+
 }
 
 dependencies {
