@@ -35,7 +35,7 @@ class EnterRestaurantActivity : AppCompatActivity() {
         yesButton.setOnClickListener { notificationTest() } //TODO Open correct Activity and transmit data
         noButton.setOnClickListener {
             CustomerPersonalDataService.currentUserPersonalData =
-                CustomerPersonalData("asdoijasdoij")
+                CustomerPersonalData("" + System.currentTimeMillis() % 1000)
         } //TODO Open correct Activity
 
         updateUserPersonalData()
