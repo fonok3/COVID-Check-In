@@ -19,6 +19,7 @@ import androidx.core.app.NotificationManagerCompat
  * @author Elias
  */
 class EnterRestaurantActivity : AppCompatActivity() {
+    private lateinit var restaurantInfoView: TextView
     private lateinit var userPersonalDataView: TextView
     private lateinit var yesButton: Button
     private lateinit var noButton: Button
@@ -28,9 +29,14 @@ class EnterRestaurantActivity : AppCompatActivity() {
 
         setContentView(R.layout.enter_restaurant_activity)
 
+        restaurantInfoView = findViewById(R.id.restaurantInfoView)
         userPersonalDataView = findViewById(R.id.userPersonalDataView)
         yesButton = findViewById(R.id.yes_button)
         noButton = findViewById(R.id.no_button)
+
+        val restaurantName = "Muster Restaurant" //TODO set correct restaurantName
+        restaurantInfoView.text =
+            resources.getString(R.string.ask_for_data_transmission, restaurantName)
 
         yesButton.setOnClickListener { notificationTest() } //TODO Open correct Activity and transmit data
         noButton.setOnClickListener {
