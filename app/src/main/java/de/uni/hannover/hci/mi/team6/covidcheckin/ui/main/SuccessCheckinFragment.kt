@@ -8,14 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
-import kotlinx.android.synthetic.main.main_fragment.*
+import kotlinx.android.synthetic.main.success_checkin_layout.*
 
-class MainFragment : Fragment() {
+class SuccessCheckinFragment : Fragment() {
 
     private val restaurantName = "Muster Restaurant"
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = SuccessCheckinFragment()
     }
 
     private lateinit var viewModel: MainViewModel
