@@ -6,9 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
+
+    private val restaurantName = "Muster Restaurant"
 
     companion object {
         fun newInstance() = MainFragment()
@@ -25,6 +29,14 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
+
+        // done button listener
+        btn_done.setOnClickListener {
+            val toast = Toast.makeText(this.context, "Fertig button clicked", Toast.LENGTH_SHORT)
+            toast.show()
+        }
+
+        tv_restaurant_name.text = restaurantName;
     }
 
 }

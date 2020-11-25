@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="str_checkin_success">Erfolgreich registriert</string>
+    <string name="str_tks_checkin">Vielen Dank für Ihren Besuch im</string>
+    <string name="str_checkin_done">Fertig</string>
+</resources>
