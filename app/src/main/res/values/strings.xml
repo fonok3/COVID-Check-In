@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="str_export_e_mail">E-Mail ans Gesundheitsamt</string>
+    <string name="str_export_save">Auf Gerät speichern</string>
+    <string name="str_export_data">Registerdaten weitergeben</string>
+</resources>
