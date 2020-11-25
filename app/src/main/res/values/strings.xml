@@ -11,4 +11,5 @@
     <string name="bluetooth_permission_title">Bluetooth</string>
     <string name="bluetooth_permission_description">Transmit your data to the restaurant. Your data will automatically be deleted after two weeks.</string>
     <string name="enable">Enable</string>
+    <string name="go_on">Continue</string>
 </resources>
