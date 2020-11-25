@@ -1,5 +1,6 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.permission.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,7 +28,7 @@ class PermissionsFragment : Fragment(),
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        val view = inflater.inflate(R.layout.main_fragment, container, false)
+        val view = inflater.inflate(R.layout.permissions_fragment, container, false)
         return view
     }
 
@@ -35,12 +36,14 @@ class PermissionsFragment : Fragment(),
         super.onActivityCreated(savedInstanceState)
         activity?.let { repository = AndroidPermissionsRepository(it) }
 
+        refreshSwitches()
+
         notifications_switch.setOnCheckedChangeListener(this)
         location_switch.setOnCheckedChangeListener(this)
         bluetooth_switch.setOnCheckedChangeListener(this)
     }
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
-        if (!isChecked) { return refreshSwitches() }
+        if (!isChecked) { return }
 
         if (buttonView == notifications_switch)
             repository.enableNotifications()
@@ -50,6 +53,8 @@ class PermissionsFragment : Fragment(),
 
         if (buttonView == bluetooth_switch)
             repository.enableBluetooth()
+
+        refreshSwitches()
     }
 
     override fun permissionDidChange(permission: PermissionsRepository.Permission) {
@@ -57,9 +62,14 @@ class PermissionsFragment : Fragment(),
     }
 
     private fun refreshSwitches() {
-        notifications_switch.isEnabled = repository.areNotificationsEnabled
-        location_switch.isEnabled = repository.isLocationEnabled
-        bluetooth_switch.isEnabled = repository.isBluetoothEnabled
+        notifications_switch.isChecked = repository.areNotificationsEnabled
+        location_switch.isChecked = repository.isLocationEnabled
+        bluetooth_switch.isChecked = repository.isBluetoothEnabled
+
+        continue_button.setBackgroundResource(R.color.colorPrimaryDark)
+        continue_button.isEnabled = repository.areNotificationsEnabled
+                && repository.isLocationEnabled
+                && repository.isBluetoothEnabled
     }
 
 }

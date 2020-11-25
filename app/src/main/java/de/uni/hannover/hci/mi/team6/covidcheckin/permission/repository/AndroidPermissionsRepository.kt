@@ -18,21 +18,20 @@ class AndroidPermissionsRepository(private val activity: Activity) : Permissions
     private val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
 
     override val isBluetoothEnabled: Boolean
-        get() = bluetoothAdapter?.isEnabled == true
+        get() = ContextCompat.checkSelfPermission(
+            activity.applicationContext,
+            Manifest.permission.BLUETOOTH
+        ) == PackageManager.PERMISSION_GRANTED
     override val isLocationEnabled: Boolean
         get() = ContextCompat.checkSelfPermission(
             activity.applicationContext,
             Manifest.permission.ACCESS_FINE_LOCATION
-        ) != PackageManager.PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(
-            activity.applicationContext,
-            Manifest.permission.ACCESS_COARSE_LOCATION
-        ) != PackageManager.PERMISSION_GRANTED
+        ) == PackageManager.PERMISSION_GRANTED
     override val areNotificationsEnabled: Boolean
         get() = NotificationManagerCompat.from(activity.applicationContext).areNotificationsEnabled()
 
     override fun enableBluetooth() {
-        if (!isBluetoothEnabled) {
+        if (isBluetoothEnabled) {
             return
         }
         ActivityCompat.requestPermissions(
@@ -43,7 +42,7 @@ class AndroidPermissionsRepository(private val activity: Activity) : Permissions
     }
 
     override fun enableLocation() {
-        if (!isLocationEnabled) {
+        if (isLocationEnabled) {
             return
         }
         ActivityCompat.requestPermissions(
@@ -54,7 +53,7 @@ class AndroidPermissionsRepository(private val activity: Activity) : Permissions
     }
 
     override fun enableNotifications() {
-        if (!areNotificationsEnabled) {
+        if (areNotificationsEnabled) {
             return
         }
         ActivityCompat.requestPermissions(
