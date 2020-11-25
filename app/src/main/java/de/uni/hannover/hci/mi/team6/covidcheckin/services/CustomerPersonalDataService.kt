@@ -1,5 +1,7 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin
+package de.uni.hannover.hci.mi.team6.covidcheckin.services
 
+import de.uni.hannover.hci.mi.team6.covidcheckin.DefaultApplication
+import de.uni.hannover.hci.mi.team6.covidcheckin.materials.CustomerPersonalData
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
