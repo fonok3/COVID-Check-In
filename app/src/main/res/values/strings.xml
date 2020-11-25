@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="mainFragment">MainFragment</string>
+    <string name="welcomeToApp">Welcome to</string>
+    <string name="permissions_title">Permissions</string>
+    <string name="permissions_description">For the app working in the expected way, we need the following permissions:</string>
+    <string name="notifications_permission_title">Notifications</string>
+    <string name="notifications_permission_description">Get automatic notifications when entering a restaurant.</string>
+    <string name="location_permission_title">Location</string>
+    <string name="location_permission_description">Automatic recognition when entering a restaurant.</string>
+    <string name="bluetooth_permission_title">Bluetooth</string>
+    <string name="bluetooth_permission_description">Transmit your data to the restaurant. Your data will automatically be deleted after two weeks.</string>
+    <string name="enable">Enable</string>
 </resources>
