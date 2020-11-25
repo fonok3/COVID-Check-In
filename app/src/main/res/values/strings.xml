@@ -12,4 +12,9 @@
     <string name="bluetooth_permission_description">Transmit your data to the restaurant. Your data will automatically be deleted after two weeks.</string>
     <string name="enable">Enable</string>
     <string name="go_on">Continue</string>
+    <string name="channel_name">Restaurantdetection</string>
+    <string name="channel_description">Covid Checkin Restaurant Detection Notifications</string>
+    <string name="ask_for_data_transmission">Sollen die untenstehenden Daten an das \"%1$s\" übertragen werden?</string>
+    <string name="no_button_text">NEIN</string>
+    <string name="yes_button_text">JA</string>
 </resources>
