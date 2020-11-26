@@ -1,12 +1,10 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.ui.bluetooth
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import de.uni.hannover.hci.mi.team6.covidcheckin.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import kotlinx.android.synthetic.main.bluetooth_fragment.*
 
