@@ -7,8 +7,9 @@ import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import de.uni.hannover.hci.mi.team6.covidcheckin.DefaultApplication
 
-class AndroidPermissionsService(private val activity: Activity) : PermissionsService {
+class AndroidPermissionsService() : PermissionsService {
     companion object {
         const val TAG: String = "AndroidPermissionsRepository"
         const val REQUEST_ENABLE_PERMISSIONS: Int = 1
@@ -21,13 +22,16 @@ class AndroidPermissionsService(private val activity: Activity) : PermissionsSer
         get() = bluetoothAdapter?.isEnabled == true
     override val isLocationEnabled: Boolean
         get() = ContextCompat.checkSelfPermission(
-            activity.applicationContext,
+            DefaultApplication.context,
             Manifest.permission.ACCESS_FINE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
     override val areNotificationsEnabled: Boolean
-        get() = NotificationManagerCompat.from(activity.applicationContext).areNotificationsEnabled()
+        get() = NotificationManagerCompat.from(DefaultApplication.context).areNotificationsEnabled()
+    override val allPermissionsGranted: Boolean
+        get() = isBluetoothEnabled && isLocationEnabled && areNotificationsEnabled
 
-    override fun enableBluetooth() {
+
+    override fun enableBluetooth(activity: Activity) {
         if (isBluetoothEnabled) {
             return
         }
@@ -38,7 +42,7 @@ class AndroidPermissionsService(private val activity: Activity) : PermissionsSer
         )
     }
 
-    override fun enableLocation() {
+    override fun enableLocation(activity: Activity) {
         if (isLocationEnabled) {
             return
         }
@@ -49,7 +53,7 @@ class AndroidPermissionsService(private val activity: Activity) : PermissionsSer
         )
     }
 
-    override fun enableNotifications() {
+    override fun enableNotifications(activity: Activity) {
         if (areNotificationsEnabled) {
             return
         }

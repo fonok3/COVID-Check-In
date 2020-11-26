@@ -1,11 +1,13 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.permission.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
+import de.uni.hannover.hci.mi.team6.covidcheckin.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.permissions.PermissionsService
@@ -37,18 +39,23 @@ class PermissionsFragment : Fragment(),
         notifications_switch.setOnCheckedChangeListener(this)
         location_switch.setOnCheckedChangeListener(this)
         bluetooth_switch.setOnCheckedChangeListener(this)
+
+        continue_button.setOnClickListener {
+            //val intent = Intent(this, BluetoothActivity::class.java)
+            //startActivity(intent)
+        }
     }
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
         if (!isChecked) { return }
 
         if (buttonView == notifications_switch)
-            service.enableNotifications()
+            service.enableNotifications(activity!!)
 
         if (buttonView == location_switch)
-            service.enableLocation()
+            service.enableLocation(activity!!)
 
         if (buttonView == bluetooth_switch)
-            service.enableBluetooth()
+            service.enableBluetooth(activity!!)
 
         refreshSwitches()
     }
