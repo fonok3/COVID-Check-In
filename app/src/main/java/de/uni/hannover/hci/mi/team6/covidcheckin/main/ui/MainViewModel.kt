@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.ui.main
+package de.uni.hannover.hci.mi.team6.covidcheckin.main.ui
 
 import androidx.lifecycle.ViewModel
 

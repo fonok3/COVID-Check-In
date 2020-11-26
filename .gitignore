@@ -101,3 +101,6 @@ lint/tmp/
 /captures
 .externalNativeBuild
 .cxx
+
+# von Elias hinzugefügt
+.idea/compiler.xml
