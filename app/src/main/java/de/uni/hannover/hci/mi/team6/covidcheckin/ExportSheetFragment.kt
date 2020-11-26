@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.ui.main
+package de.uni.hannover.hci.mi.team6.covidcheckin
 
 import android.content.Intent
 import android.net.Uri

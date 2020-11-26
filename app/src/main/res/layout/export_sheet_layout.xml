@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:paddingTop="8dp"
     android:paddingBottom="8dp"
-    tools:context=".ui.main.ExportSheetFragment">
+    tools:context=".ExportSheetFragment">
 
     <TextView
         android:layout_width="match_parent"
