@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import de.uni.hannover.hci.mi.team6.covidcheckin.main.MainActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.materials.CustomerPersonalData
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.CustomerPersonalDataService
 

@@ -1,8 +1,9 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin
+package de.uni.hannover.hci.mi.team6.covidcheckin.permission
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import de.uni.hannover.hci.mi.team6.covidcheckin.ui.main.MainFragment
+import androidx.appcompat.app.AppCompatActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import de.uni.hannover.hci.mi.team6.covidcheckin.permission.ui.PermissionsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, PermissionsFragment.newInstance())
                 .commitNow()
         }
     }
