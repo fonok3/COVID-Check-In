@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ContactForm"></activity>
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".main.MainActivity"></activity>
         <activity android:name=".permission.PermissionsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
