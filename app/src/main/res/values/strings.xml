@@ -20,6 +20,9 @@
     <string name="str_checkin_success">Erfolgreich registriert</string>
     <string name="str_tks_checkin">Vielen Dank für Ihren Besuch im</string>
     <string name="str_checkin_done">Fertig</string>
+    <string name="str_export_e_mail">E-Mail ans Gesundheitsamt</string>
+    <string name="str_export_save">Auf Gerät speichern</string>
+    <string name="str_export_data">Registerdaten weitergeben</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="weiter">Weiter</string>
