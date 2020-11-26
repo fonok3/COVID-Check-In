@@ -21,8 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".enterrestaurant.EnterRestaurantActivity" />
-        <activity android:name=".EnterRestaurantActivity" />
-        <activity android:name=".BluetoothActivity" />
+        <activity android:name=".bluetooth.BluetoothActivity" />
     </application>
 
 </manifest>

@@ -3,8 +3,8 @@ package de.uni.hannover.hci.mi.team6.covidcheckin.permission
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import de.uni.hannover.hci.mi.team6.covidcheckin.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.permission.ui.PermissionsFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.permissions.PermissionsService
