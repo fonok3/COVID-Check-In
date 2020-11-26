@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ContactForm">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="315dp"
+        android:layout_height="90dp"
+        android:text="@string/startscreen_fragment_header"
+        android:textColor="@color/Black"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15"
+        tools:layout_editor_absoluteX="58dp" />
+
+    <EditText
+        android:id="@+id/editText_Vorname"
+        android:layout_width="315dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="29dp"
+        android:background="#C4C4C4"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/vorname"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/editText_Nachname"
+        android:layout_width="315dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:background="#C4C4C4"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/nachname"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Vorname" />
+
+    <EditText
+        android:id="@+id/editText_telefone"
+        android:layout_width="315dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:background="#C4C4C4"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/telefone"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_stadt" />
+
+    <EditText
+        android:id="@+id/editText_strasse"
+        android:layout_width="230dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:background="#C4C4C4"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/strasse"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Nachname" />
+
+    <EditText
+        android:id="@+id/editText_stadt"
+        android:layout_width="230dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:background="#C4C4C4"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/stadt"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_strasse" />
+
+    <EditText
+        android:id="@+id/editText_plz"
+        android:layout_width="78dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:background="#C4C4C4"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/plz"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toEndOf="@+id/editText_stadt"
+        app:layout_constraintTop_toBottomOf="@+id/editText_hausnummer" />
+
+    <EditText
+        android:id="@+id/editText_hausnummer"
+        android:layout_width="78dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:background="#C4C4C4"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/hausnummer"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toEndOf="@+id/editText_strasse"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Nachname" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="290dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/datenschutzerklaerung"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_telefone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
