@@ -8,5 +8,5 @@
     <string name="stadt">Stadt</string>
     <string name="plz">PLZ</string>
     <string name="telefone">Telefonnummer</string>
-    <string name="datenschutzerklaerung"><![CDATA[Ich habe die <font color=\'#cc0029\'>Datenschutzerklärung</font> gelesen und erkläre mich damit einverstanden, dass meine Daten im Rahmen dieses Projekts verwendet werden können.]]></string>
+    <string name="datenschutzerklaerung"><![CDATA[Ich habe die Datenschutzerklärung gelesen und erkläre mich damit einverstanden, dass meine Daten im Rahmen dieses Projekts verwendet werden können.]]></string>
 </resources>
