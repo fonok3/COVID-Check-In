@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.permission.repository
+package de.uni.hannover.hci.mi.team6.covidcheckin.services.permissions
 
 import android.Manifest
 import android.app.Activity
@@ -8,20 +8,17 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 
-class AndroidPermissionsRepository(private val activity: Activity) : PermissionsRepository {
+class AndroidPermissionsService(private val activity: Activity) : PermissionsService {
     companion object {
         const val TAG: String = "AndroidPermissionsRepository"
         const val REQUEST_ENABLE_PERMISSIONS: Int = 1
     }
 
-    private var listeners = HashSet<PermissionsRepository.ChangedListener>()
+    private var listeners = HashSet<PermissionsService.ChangedListener>()
     private val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
 
     override val isBluetoothEnabled: Boolean
-        get() = ContextCompat.checkSelfPermission(
-            activity.applicationContext,
-            Manifest.permission.BLUETOOTH
-        ) == PackageManager.PERMISSION_GRANTED
+        get() = bluetoothAdapter?.isEnabled == true
     override val isLocationEnabled: Boolean
         get() = ContextCompat.checkSelfPermission(
             activity.applicationContext,
@@ -63,11 +60,11 @@ class AndroidPermissionsRepository(private val activity: Activity) : Permissions
         )
     }
 
-    override fun addPermissionsChangedListener(listener: PermissionsRepository.ChangedListener) {
+    override fun addPermissionsChangedListener(listener: PermissionsService.ChangedListener) {
         listeners.add(listener)
     }
 
-    override fun removePermissionsChangedListener(listener: PermissionsRepository.ChangedListener) {
+    override fun removePermissionsChangedListener(listener: PermissionsService.ChangedListener) {
         listeners.remove(listener)
     }
 }

@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.services
+package de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData
 
 import de.uni.hannover.hci.mi.team6.covidcheckin.DefaultApplication
 import de.uni.hannover.hci.mi.team6.covidcheckin.materials.CustomerPersonalData

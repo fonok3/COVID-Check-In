@@ -1,6 +1,6 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.permission.repository
+package de.uni.hannover.hci.mi.team6.covidcheckin.services.permissions
 
-interface PermissionsRepository {
+interface PermissionsService {
     interface ChangedListener {
         fun permissionDidChange(permission: Permission)
     }
