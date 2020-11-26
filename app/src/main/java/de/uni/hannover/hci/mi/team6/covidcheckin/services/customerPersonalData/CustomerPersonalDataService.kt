@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.services
+package de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData
 
 import de.uni.hannover.hci.mi.team6.covidcheckin.DefaultApplication
 import de.uni.hannover.hci.mi.team6.covidcheckin.materials.CustomerPersonalData
@@ -18,7 +18,7 @@ object CustomerPersonalDataService {
     /**
      * File where UserData is persisted
      */
-    private val userDataFileName = "userData.json"
+    private const val userDataFileName = "userData.json"
 
     /**
      * The current Data object that contains the Customer Data for the current User
@@ -31,7 +31,7 @@ object CustomerPersonalDataService {
 
     init {
         currentUserPersonalData = readUserdataFromFile()
-        currentUserPersonalDataObservers.add { ->
+        currentUserPersonalDataObservers.add {
             val file = File(DefaultApplication.context.filesDir, userDataFileName)
             file.writeText(Json.encodeToString(currentUserPersonalData))
         }
@@ -40,7 +40,7 @@ object CustomerPersonalDataService {
     private fun readUserdataFromFile(): CustomerPersonalData {
         val file = File(DefaultApplication.context.filesDir, userDataFileName)
         if (file.exists()) {
-            return Json.decodeFromString<CustomerPersonalData>(file.readText())
+            return Json.decodeFromString(file.readText())
         }
         return CustomerPersonalData()
     }

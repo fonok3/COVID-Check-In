@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.permission.repository
+package de.uni.hannover.hci.mi.team6.covidcheckin.services.permissions
 
 import android.Manifest
 import android.app.Activity
@@ -7,30 +7,31 @@ import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import de.uni.hannover.hci.mi.team6.covidcheckin.DefaultApplication
 
-class AndroidPermissionsRepository(private val activity: Activity) : PermissionsRepository {
+class AndroidPermissionsService() : PermissionsService {
     companion object {
         const val TAG: String = "AndroidPermissionsRepository"
         const val REQUEST_ENABLE_PERMISSIONS: Int = 1
     }
 
-    private var listeners = HashSet<PermissionsRepository.ChangedListener>()
+    private var listeners = HashSet<PermissionsService.ChangedListener>()
     private val bluetoothAdapter: BluetoothAdapter? = BluetoothAdapter.getDefaultAdapter()
 
     override val isBluetoothEnabled: Boolean
-        get() = ContextCompat.checkSelfPermission(
-            activity.applicationContext,
-            Manifest.permission.BLUETOOTH
-        ) == PackageManager.PERMISSION_GRANTED
+        get() = bluetoothAdapter?.isEnabled == true
     override val isLocationEnabled: Boolean
         get() = ContextCompat.checkSelfPermission(
-            activity.applicationContext,
+            DefaultApplication.context,
             Manifest.permission.ACCESS_FINE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
     override val areNotificationsEnabled: Boolean
-        get() = NotificationManagerCompat.from(activity.applicationContext).areNotificationsEnabled()
+        get() = NotificationManagerCompat.from(DefaultApplication.context).areNotificationsEnabled()
+    override val allPermissionsGranted: Boolean
+        get() = isBluetoothEnabled && isLocationEnabled && areNotificationsEnabled
 
-    override fun enableBluetooth() {
+
+    override fun enableBluetooth(activity: Activity) {
         if (isBluetoothEnabled) {
             return
         }
@@ -41,7 +42,7 @@ class AndroidPermissionsRepository(private val activity: Activity) : Permissions
         )
     }
 
-    override fun enableLocation() {
+    override fun enableLocation(activity: Activity) {
         if (isLocationEnabled) {
             return
         }
@@ -52,7 +53,7 @@ class AndroidPermissionsRepository(private val activity: Activity) : Permissions
         )
     }
 
-    override fun enableNotifications() {
+    override fun enableNotifications(activity: Activity) {
         if (areNotificationsEnabled) {
             return
         }
@@ -63,11 +64,11 @@ class AndroidPermissionsRepository(private val activity: Activity) : Permissions
         )
     }
 
-    override fun addPermissionsChangedListener(listener: PermissionsRepository.ChangedListener) {
+    override fun addPermissionsChangedListener(listener: PermissionsService.ChangedListener) {
         listeners.add(listener)
     }
 
-    override fun removePermissionsChangedListener(listener: PermissionsRepository.ChangedListener) {
+    override fun removePermissionsChangedListener(listener: PermissionsService.ChangedListener) {
         listeners.remove(listener)
     }
 }
