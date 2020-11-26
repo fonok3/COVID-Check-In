@@ -1,8 +1,9 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin
+package de.uni.hannover.hci.mi.team6.covidcheckin.checkin
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import kotlinx.android.synthetic.main.checkin_success_layout.*
 
 class CheckinSuccessActivity : AppCompatActivity() {

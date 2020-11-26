@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.materials
+package de.uni.hannover.hci.mi.team6.covidcheckin.model
 
 import kotlinx.serialization.Serializable
 
