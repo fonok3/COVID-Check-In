@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".permission.PermissionsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".enterrestaurant.EnterRestaurantActivity" />
+        <activity android:name=".bluetooth.BluetoothActivity" />
     </application>
 
 </manifest>

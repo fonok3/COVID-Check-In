@@ -1,75 +1,78 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.permission.ui
 
-import android.graphics.Color
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
-import de.uni.hannover.hci.mi.team6.covidcheckin.permission.repository.AndroidPermissionsRepository
-import de.uni.hannover.hci.mi.team6.covidcheckin.permission.repository.PermissionsRepository
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.permissions.PermissionsService
 import kotlinx.android.synthetic.main.permissions_fragment.*
 
 
 class PermissionsFragment : Fragment(),
     CompoundButton.OnCheckedChangeListener,
-    PermissionsRepository.ChangedListener {
+    PermissionsService.ChangedListener {
 
     companion object {
         fun newInstance() = PermissionsFragment()
     }
 
-    private lateinit var repository: PermissionsRepository
-
-    private val viewModel: PermissionsViewModel by viewModels()
+    private val service: PermissionsService by lazy {
+        ServicesModule.permissionsService
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        val view = inflater.inflate(R.layout.permissions_fragment, container, false)
-        return view
+        return inflater.inflate(R.layout.permissions_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        activity?.let { repository = AndroidPermissionsRepository(it) }
 
         refreshSwitches()
 
         notifications_switch.setOnCheckedChangeListener(this)
         location_switch.setOnCheckedChangeListener(this)
         bluetooth_switch.setOnCheckedChangeListener(this)
+
+        continue_button.setOnClickListener {
+            val intent = Intent(activity, BluetoothActivity::class.java)
+            startActivity(intent)
+        }
     }
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
         if (!isChecked) { return }
 
         if (buttonView == notifications_switch)
-            repository.enableNotifications()
+            service.enableNotifications(activity!!)
 
         if (buttonView == location_switch)
-            repository.enableLocation()
+            service.enableLocation(activity!!)
 
         if (buttonView == bluetooth_switch)
-            repository.enableBluetooth()
+            service.enableBluetooth(activity!!)
 
         refreshSwitches()
     }
 
-    override fun permissionDidChange(permission: PermissionsRepository.Permission) {
+    override fun permissionDidChange(permission: PermissionsService.Permission) {
         refreshSwitches()
     }
 
     private fun refreshSwitches() {
-        notifications_switch.isChecked = repository.areNotificationsEnabled
-        location_switch.isChecked = repository.isLocationEnabled
-        bluetooth_switch.isChecked = repository.isBluetoothEnabled
+        notifications_switch.isChecked = service.areNotificationsEnabled
+        location_switch.isChecked = service.isLocationEnabled
+        bluetooth_switch.isChecked = service.isBluetoothEnabled
 
         continue_button.setBackgroundResource(R.color.colorPrimaryDark)
-        continue_button.isEnabled = repository.areNotificationsEnabled
-                && repository.isLocationEnabled
-                && repository.isBluetoothEnabled
+        continue_button.isEnabled = service.areNotificationsEnabled
+                && service.isLocationEnabled
+                && service.isBluetoothEnabled
     }
 
 }

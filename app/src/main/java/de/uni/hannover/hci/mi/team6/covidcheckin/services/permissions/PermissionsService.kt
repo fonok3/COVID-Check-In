@@ -1,6 +1,8 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.permission.repository
+package de.uni.hannover.hci.mi.team6.covidcheckin.services.permissions
 
-interface PermissionsRepository {
+import android.app.Activity
+
+interface PermissionsService {
     interface ChangedListener {
         fun permissionDidChange(permission: Permission)
     }
@@ -16,9 +18,11 @@ interface PermissionsRepository {
     val isLocationEnabled: Boolean
     val areNotificationsEnabled: Boolean
 
-    fun enableBluetooth()
-    fun enableLocation()
-    fun enableNotifications()
+    val allPermissionsGranted: Boolean
+
+    fun enableBluetooth(activity: Activity)
+    fun enableLocation(activity: Activity)
+    fun enableNotifications(activity: Activity)
 
     fun addPermissionsChangedListener(listener: ChangedListener)
     fun removePermissionsChangedListener(listener: ChangedListener)

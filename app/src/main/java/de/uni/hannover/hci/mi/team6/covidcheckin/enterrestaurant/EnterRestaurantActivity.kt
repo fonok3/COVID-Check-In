@@ -15,7 +15,7 @@ import androidx.core.app.NotificationManagerCompat
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.main.MainActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.materials.CustomerPersonalData
-import de.uni.hannover.hci.mi.team6.covidcheckin.services.CustomerPersonalDataService
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
 
 /**
  * Activity that shows the screen where the User can accept or deny transfer of his UserData to the restaurant

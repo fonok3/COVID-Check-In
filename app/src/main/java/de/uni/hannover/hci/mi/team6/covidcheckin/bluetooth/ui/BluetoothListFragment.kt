@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.ui.bluetooth
+package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import kotlinx.android.synthetic.main.bluetooth_list_fragment.*
 
 class BluetoothListFragment : Fragment() {
