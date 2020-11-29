@@ -13,6 +13,10 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.services.permissions.Permission
 
 
 class PermissionsActivity : AppCompatActivity() {
+    companion object {
+        const val AUTO_FORWARD = "AUTO_FORWARD"
+    }
+
     private val permissionsService: PermissionsService by lazy {
         ServicesModule.permissionsService
     }
@@ -27,7 +31,9 @@ class PermissionsActivity : AppCompatActivity() {
                 .commitNow()
         }
 
-        if (permissionsService.allPermissionsGranted) {
+        if (permissionsService.allPermissionsGranted && intent.extras?.get(
+                ContactFormActivity.AUTO_FORWARD
+            ) as? Boolean != false) {
             val intent = Intent(this, ContactFormActivity::class.java)
             finish()
             startActivity(intent)

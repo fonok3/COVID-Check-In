@@ -37,4 +37,6 @@
     <string name="datenschutzerklaerung"><![CDATA[Ich habe die Datenschutzerklärung gelesen und erkläre mich damit einverstanden, dass meine Daten im Rahmen dieses Projekts verwendet werden können.]]></string>
     <string name="manual_search">Manual Search</string>
     <string name="desc">Desc</string>
+    <string name="info">Info</string>
+    <string name="edit">Edit</string>
 </resources>
