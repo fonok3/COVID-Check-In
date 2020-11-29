@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.contactform
+package de.uni.hannover.hci.mi.team6.covidcheckin.contactForm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.contactform.ui
+package de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
