@@ -15,6 +15,7 @@ import androidx.core.app.NotificationManagerCompat
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.main.MainActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
 
 /**
@@ -43,16 +44,20 @@ class EnterRestaurantActivity : AppCompatActivity() {
 
         yesButton.setOnClickListener { notificationTest() } //TODO Open correct Activity and transmit data
         noButton.setOnClickListener {
-            CustomerPersonalDataService.currentUserPersonalData =
+            ServicesModule.customerPersonalDataService.save(
                 CustomerPersonalData("" + System.currentTimeMillis() % 1000)
+            )
         } //TODO Open correct Activity
 
         updateUserPersonalData()
-        CustomerPersonalDataService.addCurrentUserPersonalDataObserver { -> updateUserPersonalData() }
+        ServicesModule.customerPersonalDataService.addCurrentUserPersonalDataObserver { -> updateUserPersonalData() }
     }
 
     private fun updateUserPersonalData() {
-        userPersonalDataView.text = CustomerPersonalDataService.currentUserPersonalData.toString()
+        userPersonalDataView.text =
+            ServicesModule.customerPersonalDataService.currentUserPersonalData?.toString()
+                ?: "No Saved Data"
+        //TODO open contact form if no data saved
     }
 
 
