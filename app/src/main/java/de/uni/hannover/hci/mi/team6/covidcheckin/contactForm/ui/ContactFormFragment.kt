@@ -1,11 +1,17 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.permission.ui.PermissionsFragment
+import kotlinx.android.synthetic.main.fragment_contact_form.*
+import kotlinx.android.synthetic.main.permissions_fragment.*
+import kotlinx.android.synthetic.main.permissions_fragment.continue_button
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,6 +34,8 @@ class ContactFormFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
     }
 
     override fun onCreateView(
@@ -36,6 +44,15 @@ class ContactFormFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_contact_form, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        form_save_button.setOnClickListener {
+            val intent = Intent(activity, BluetoothActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {
