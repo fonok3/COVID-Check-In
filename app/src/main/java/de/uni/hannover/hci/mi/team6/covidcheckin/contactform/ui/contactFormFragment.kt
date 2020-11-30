@@ -1,16 +1,21 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.contactform.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
-import de.uni.hannover.hci.mi.team6.covidcheckin.contactform.contactFormActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
 import kotlinx.android.synthetic.main.fragment_contact_form.*
 
+
+/**
+* This fragment will be added to the activity contactFormActivity. The user will give his data as an input the the data will be
+* saved to CustomerPersonalDataService.
+* @author Anmar
+* */
 
 class contactFormFragment : Fragment(R.layout.fragment_contact_form) {
 
