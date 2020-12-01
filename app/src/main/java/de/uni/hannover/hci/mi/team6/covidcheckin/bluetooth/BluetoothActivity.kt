@@ -3,13 +3,12 @@ package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothListFragment
-import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.contactFormActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.permission.PermissionsActivity
 import kotlinx.android.synthetic.main.bluetooth_activity.*
 
@@ -39,7 +38,7 @@ class BluetoothActivity : AppCompatActivity() {
             true
         }
         R.id.action_edit -> {
-            val intent = Intent(this, ContactFormActivity::class.java)
+            val intent = Intent(this, contactFormActivity::class.java)
             intent.putExtra(PermissionsActivity.AUTO_FORWARD, false)
             startActivity(intent)
             true
