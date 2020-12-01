@@ -1,8 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_height="match_parent" android:layout_width="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".bluetooth.BluetoothActivity">
+
     <item
-        android:id="@+id/edit"
-        android:icon="@drawable/edit_white_24x24"
-        android:title="FFFF"
-        app:showAsAction="always"/>
+        android:id="@+id/action_info"
+        android:orderInCategory="300"
+        android:title="@string/info"
+        android:icon="@drawable/ic_baseline_info_24"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_edit"
+        android:orderInCategory="200"
+        android:title="@string/edit"
+        android:icon="@drawable/ic_baseline_edit_24"
+        app:showAsAction="always" />
 </menu>

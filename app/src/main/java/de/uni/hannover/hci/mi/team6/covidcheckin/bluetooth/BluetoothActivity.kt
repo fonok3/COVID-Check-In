@@ -1,5 +1,6 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,8 @@ import android.view.MenuItem
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothListFragment
+import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.permission.PermissionsActivity
 import kotlinx.android.synthetic.main.bluetooth_activity.*
 
 class BluetoothActivity : AppCompatActivity() {
@@ -29,13 +32,19 @@ class BluetoothActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.edit -> {
-            Log.e("TODO","IMPLEMENT_CHANGE_TO_USERDATA")
+        R.id.action_info -> {
+            val intent = Intent(this, PermissionsActivity::class.java)
+            intent.putExtra(PermissionsActivity.AUTO_FORWARD, false)
+            startActivity(intent)
             true
         }
-        else -> {
+        R.id.action_edit -> {
+            val intent = Intent(this, ContactFormActivity::class.java)
+            intent.putExtra(PermissionsActivity.AUTO_FORWARD, false)
+            startActivity(intent)
             true
         }
+        else -> false
     }
 
 
