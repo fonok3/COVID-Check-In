@@ -42,6 +42,7 @@ class ContactFormFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         form_save_button.setOnClickListener{
         val vorname = this.editText_Vorname.toString()
         val nachname = this.editText_Nachname.toString()

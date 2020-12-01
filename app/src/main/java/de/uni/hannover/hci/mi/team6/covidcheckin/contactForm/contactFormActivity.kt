@@ -15,7 +15,7 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.C
  *@author Anmar
  *
  */
-class contactFormActivity : AppCompatActivity() {
+class contactFormActivity : AppCompatActivity(R.layout.contactformactivity_layout) {
     companion object {
         const val AUTO_FORWARD = "AUTO_FORWARD"
     }
