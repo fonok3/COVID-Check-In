@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.contactform.ui
+package de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,47 +6,54 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
-import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import kotlinx.android.synthetic.main.fragment_contact_form.*
 
 
 /**
-* This fragment will be added to the activity contactFormActivity. The user will give his data as an input the the data will be
-* saved to CustomerPersonalDataService.
-* @author Anmar
-* */
+ * This fragment will be added to the activity contactFormActivity. The user will give his data as an input the the data will be
+ * saved to CustomerPersonalDataService.
+ * @author Anmar
+ * */
 
-class contactFormFragment : Fragment(R.layout.fragment_contact_form) {
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+class ContactFormFragment : Fragment() {
+    companion object {
+        fun newInstance() = BluetoothFragment()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_contact_form, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
-        weiter_button.setOnClickListener{
+        form_save_button.setOnClickListener {
 
-            val vorname = this.editText_Vorname.toString()
-            val nachname = this.editText_Nachname.toString()
-            val nutzer_strasse = this.editText_strasse.toString()
-            val nutzer_strasse_num = this.editText_hausnummer.toString()
-            val nutzer_plz = this.editText_plz.toString()
-            val nutzer_stadt = this.editText_stadt.toString()
-            val nutzer_telefonnummer = this.editText_telefone.toString()
+            val firstName = this.editText_Vorname.toString()
+            val sectionName = this.editText_Nachname.toString()
+            val street = this.editText_strasse.toString()
+            val streetNumber = this.editText_hausnummer.toString()
+            val zipCode = this.editText_plz.toString()
+            val city = this.editText_stadt.toString()
+            val phoneNumber = this.editText_telefone.toString()
 
-            CustomerPersonalDataService.currentUserPersonalData= CustomerPersonalData(vorname,nachname,nutzer_strasse,nutzer_strasse_num,nutzer_plz,nutzer_stadt,nutzer_telefonnummer)
+            ServicesModule.customerPersonalDataService.save(
+                CustomerPersonalData(
+                    firstName,
+                    sectionName,
+                    street,
+                    streetNumber,
+                    zipCode,
+                    city,
+                    phoneNumber
+                )
+            )
 
         }
     }

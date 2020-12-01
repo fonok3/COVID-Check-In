@@ -7,15 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
-import de.uni.hannover.hci.mi.team6.covidcheckin.permission.ui.PermissionsViewModel
 
 class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment()
     }
-
-    private val viewModel: PermissionsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
