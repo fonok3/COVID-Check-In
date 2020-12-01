@@ -1,48 +1,32 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ui
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
-import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
-import de.uni.hannover.hci.mi.team6.covidcheckin.permission.ui.PermissionsFragment
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothFragment
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import kotlinx.android.synthetic.main.fragment_contact_form.*
-import kotlinx.android.synthetic.main.permissions_fragment.*
-import kotlinx.android.synthetic.main.permissions_fragment.continue_button
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- * Use the [ContactFormFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+ * This fragment will be added to the activity contactFormActivity. The user will give his data as an input the the data will be
+ * saved to CustomerPersonalDataService.
+ * @author Anmar
+ * */
+
 class ContactFormFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-
-
+    companion object {
+        fun newInstance() = BluetoothFragment()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_contact_form, container, false)
     }
 
@@ -50,28 +34,29 @@ class ContactFormFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         form_save_button.setOnClickListener {
-            val intent = Intent(activity, BluetoothActivity::class.java)
-            startActivity(intent)
+
+            val firstName = this.editText_Vorname.toString()
+            val sectionName = this.editText_Nachname.toString()
+            val street = this.editText_strasse.toString()
+            val streetNumber = this.editText_hausnummer.toString()
+            val zipCode = this.editText_plz.toString()
+            val city = this.editText_stadt.toString()
+            val phoneNumber = this.editText_telefone.toString()
+
+            ServicesModule.customerPersonalDataService.save(
+                CustomerPersonalData(
+                    firstName,
+                    sectionName,
+                    street,
+                    streetNumber,
+                    zipCode,
+                    city,
+                    phoneNumber
+                )
+            )
+
         }
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ContactForm.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ContactFormFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }

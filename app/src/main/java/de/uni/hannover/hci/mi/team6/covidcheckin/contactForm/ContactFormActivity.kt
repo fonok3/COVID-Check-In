@@ -25,7 +25,7 @@ class ContactFormActivity : AppCompatActivity() {
         setContentView(R.layout.contact_form_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, ContactFormFragment.newInstance())
+                .replace(R.id.contact_form_container, ContactFormFragment.newInstance())
                 .commitNow()
         }
 
