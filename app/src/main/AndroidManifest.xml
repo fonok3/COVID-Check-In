@@ -23,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".enterrestaurant.EnterRestaurantActivity" />
+        <activity android:name=".bluetooth.BluetoothActivity"
+            android:theme="@style/BluetoothActivityStyle"/>
+
         <activity android:name=".enterRestaurant.EnterRestaurantActivity" />
         <activity android:name=".bluetooth.BluetoothActivity" />
     </application>

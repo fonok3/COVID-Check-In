@@ -6,10 +6,21 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="HeaderBar" parent="Theme.AppCompat">
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="android:textColorSecondary">@android:color/white</item>
-        <item name="actionMenuTextColor">@android:color/white</item>
+
+    <style name="ToolBarStyle" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="actionMenuTextColor">@color/colorPrimary</item>
+        <item name="backgroundColor">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
     </style>
+
+    <style name="BluetoothActivityStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="actionMenuTextColor">@color/colorPrimary</item>
+        <item name="backgroundColor">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+    </style>
+
 </resources>

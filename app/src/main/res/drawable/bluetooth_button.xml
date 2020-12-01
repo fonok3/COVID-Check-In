@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
         android:color="#FFFFFFFF">
-    <item android:drawable="@drawable/bluetooth_icon"
+    <item android:drawable="@drawable/bluetooth_white"
           android:left="20dp"
           android:top="20dp"
           android:width="160dp"
