@@ -1,24 +1,21 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.permission
+package de.uni.hannover.hci.mi.team6.covidcheckin.contactForm
 
 import android.content.Intent
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
-import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity
-import de.uni.hannover.hci.mi.team6.covidcheckin.permission.ui.PermissionsFragment
+import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ui.ContactFormFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
-import de.uni.hannover.hci.mi.team6.covidcheckin.services.permissions.PermissionsService
 
-
-class PermissionsActivity : AppCompatActivity() {
+class ContactFormActivity : AppCompatActivity() {
     companion object {
         const val AUTO_FORWARD = "AUTO_FORWARD"
     }
 
-    private val permissionsService: PermissionsService by lazy {
-        ServicesModule.permissionsService
+    private val customerPersonalDataService: CustomerPersonalDataService by lazy {
+        ServicesModule.customerPersonalDataService
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,14 +24,15 @@ class PermissionsActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, PermissionsFragment.newInstance())
+                .replace(R.id.container, ContactFormFragment.newInstance("", ""))
                 .commitNow()
         }
 
-        if (permissionsService.allPermissionsGranted && intent.extras?.get(
-                ContactFormActivity.AUTO_FORWARD
-            ) as? Boolean != false) {
-            val intent = Intent(this, ContactFormActivity::class.java)
+        if (customerPersonalDataService.currentUserPersonalData != null && intent.extras?.get(
+                AUTO_FORWARD
+            ) as? Boolean != false
+        ) {
+            val intent = Intent(this, BluetoothActivity::class.java)
             finish()
             startActivity(intent)
             return

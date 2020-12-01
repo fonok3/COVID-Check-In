@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.enterrestaurant
+package de.uni.hannover.hci.mi.team6.covidcheckin.enterRestaurant
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -15,7 +15,7 @@ import androidx.core.app.NotificationManagerCompat
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.main.MainActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
-import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 
 /**
  * Activity that shows the screen where the User can accept or deny transfer of his UserData to the restaurant
@@ -43,16 +43,20 @@ class EnterRestaurantActivity : AppCompatActivity() {
 
         yesButton.setOnClickListener { notificationTest() } //TODO Open correct Activity and transmit data
         noButton.setOnClickListener {
-            CustomerPersonalDataService.currentUserPersonalData =
+            ServicesModule.customerPersonalDataService.save(
                 CustomerPersonalData("" + System.currentTimeMillis() % 1000)
+            )
         } //TODO Open correct Activity
 
         updateUserPersonalData()
-        CustomerPersonalDataService.addCurrentUserPersonalDataObserver { -> updateUserPersonalData() }
+        ServicesModule.customerPersonalDataService.addCurrentUserPersonalDataObserver { -> updateUserPersonalData() }
     }
 
     private fun updateUserPersonalData() {
-        userPersonalDataView.text = CustomerPersonalDataService.currentUserPersonalData.toString()
+        userPersonalDataView.text =
+            ServicesModule.customerPersonalDataService.currentUserPersonalData?.toString()
+                ?: "No Saved Data"
+        //TODO open contact form if no data saved
     }
 
 
