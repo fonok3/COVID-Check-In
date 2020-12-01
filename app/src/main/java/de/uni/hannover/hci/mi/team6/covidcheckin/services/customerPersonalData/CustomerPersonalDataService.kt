@@ -1,54 +1,24 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData
 
-import de.uni.hannover.hci.mi.team6.covidcheckin.DefaultApplication
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
-import kotlinx.serialization.decodeFromString
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-import java.io.File
-import kotlin.properties.Delegates
 
 /**
- * Service that provides the current user data. Saves the data locally and loads it when needed.
- * @author Elias
+ * Service that provides the current user data.
+ * @author Florian Herzog
  */
-object CustomerPersonalDataService {
-    private val currentUserPersonalDataObservers = mutableListOf<() -> Unit>()
+interface CustomerPersonalDataService {
+    /**
+     *  The currently saved user data if available.
+     */
+    val currentUserPersonalData: CustomerPersonalData?
 
     /**
-     * File where UserData is persisted
+     *  Saves new customer personal data.
      */
-    private const val userDataFileName = "userData.json"
+    fun save(customerPersonalData: CustomerPersonalData?)
 
     /**
-     * The current Data object that contains the Customer Data for the current User
+     *  Adds a new observer for listening to changed personal data.
      */
-    var currentUserPersonalData: CustomerPersonalData by Delegates.observable(CustomerPersonalData()) { _, _, _ ->
-        currentUserPersonalDataObservers.forEach {
-            it()
-        }
-    }
-
-    init {
-        currentUserPersonalData = readUserdataFromFile()
-        currentUserPersonalDataObservers.add {
-            val file = File(DefaultApplication.context.filesDir, userDataFileName)
-            file.writeText(Json.encodeToString(currentUserPersonalData))
-        }
-    }
-
-    private fun readUserdataFromFile(): CustomerPersonalData {
-        val file = File(DefaultApplication.context.filesDir, userDataFileName)
-        if (file.exists()) {
-            return Json.decodeFromString(file.readText())
-        }
-        return CustomerPersonalData()
-    }
-
-    /**
-     * Observers will be notified when the current user data is changed
-     */
-    fun addCurrentUserPersonalDataObserver(observer: () -> Unit) {
-        currentUserPersonalDataObservers.add(observer)
-    }
+    fun addCurrentUserPersonalDataObserver(observer: () -> Unit)
 }

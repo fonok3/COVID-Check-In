@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/contact_form_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".contactform.contactFormActivity">
+    tools:context=".contactForm.ContactFormActivity">
 
     <TextView
         android:id="@+id/textView"
@@ -140,7 +139,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_telefone" />
 
     <Button
-        android:id="@+id/weiter_button"
+        android:id="@+id/form_save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/focusedbutton"
