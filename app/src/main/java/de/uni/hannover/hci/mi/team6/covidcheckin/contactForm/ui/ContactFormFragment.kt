@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
-import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
-import kotlinx.android.synthetic.main.fragment_contact_form.*
+import kotlinx.android.synthetic.visitor.fragment_contact_form.*
 
 
 /**
@@ -20,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_contact_form.*
 
 class ContactFormFragment : Fragment() {
     companion object {
-        fun newInstance() = BluetoothFragment()
+        fun newInstance() = ContactFormFragment()
     }
 
     override fun onCreateView(
@@ -33,9 +32,9 @@ class ContactFormFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        form_save_button.setOnClickListener {
+        weiter_button.setOnClickListener {
 
-            val firstName = this.editText_Vorname.toString()
+            val firstName = editText_Vorname.toString()
             val sectionName = this.editText_Nachname.toString()
             val street = this.editText_strasse.toString()
             val streetNumber = this.editText_hausnummer.toString()
