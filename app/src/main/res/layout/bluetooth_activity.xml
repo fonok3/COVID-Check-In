@@ -8,8 +8,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:theme="@style/ToolBarStyle"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/ToolBarStyle" />
 
     <LinearLayout
         android:id="@+id/bluetoothLayout"
