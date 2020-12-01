@@ -24,24 +24,6 @@ class BluetoothActivity : AppCompatActivity() {
                 .commitNow()
         }
         setSupportActionBar(toolbar)
-
-        topAppBar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.action_info -> {
-                    val intent = Intent(this, PermissionsActivity::class.java)
-                    intent.putExtra(PermissionsActivity.AUTO_FORWARD, false)
-                    startActivity(intent)
-                    true
-                }
-                R.id.action_edit -> {
-                    val intent = Intent(this, ContactFormActivity::class.java)
-                    intent.putExtra(PermissionsActivity.AUTO_FORWARD, false)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -50,13 +32,19 @@ class BluetoothActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.edit -> {
-            Log.e("TODO","IMPLEMENT_CHANGE_TO_USERDATA")
+        R.id.action_info -> {
+            val intent = Intent(this, PermissionsActivity::class.java)
+            intent.putExtra(PermissionsActivity.AUTO_FORWARD, false)
+            startActivity(intent)
             true
         }
-        else -> {
+        R.id.action_edit -> {
+            val intent = Intent(this, ContactFormActivity::class.java)
+            intent.putExtra(PermissionsActivity.AUTO_FORWARD, false)
+            startActivity(intent)
             true
         }
+        else -> false
     }
 
 
