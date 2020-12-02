@@ -29,8 +29,8 @@
         android:layout_marginTop="29dp"
         android:background="#C4C4C4"
         android:ems="10"
+        android:hint="@string/vorname"
         android:inputType="textPersonName"
-        android:text="@string/vorname"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.395"
@@ -44,8 +44,8 @@
         android:layout_marginTop="16dp"
         android:background="#C4C4C4"
         android:ems="10"
+        android:hint="@string/nachname"
         android:inputType="textPersonName"
-        android:text="@string/nachname"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.395"
@@ -59,26 +59,48 @@
         android:layout_marginTop="16dp"
         android:background="#C4C4C4"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/telefone"
+        android:hint="@string/telefone"
+        android:inputType="phone"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_stadt" />
 
+
+    <EditText
+        android:id="@+id/editText_hausnummer"
+        android:layout_width="78dp"
+        android:layout_height="31dp"
+
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
+
+        android:background="#C4C4C4"
+        android:ems="10"
+        android:hint="@string/hausnummer"
+        android:inputType="textPersonName"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toEndOf="@+id/editText_strasse"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Nachname" />
+
     <EditText
         android:id="@+id/editText_strasse"
         android:layout_width="230dp"
         android:layout_height="31dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:background="#C4C4C4"
         android:ems="10"
+        app:layout_constraintHorizontal_bias="0.395"
+
+        android:hint="@string/strasse"
         android:inputType="textPersonName"
-        android:text="@string/strasse"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintEnd_toStartOf="@+id/editText_hausnummer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_Nachname" />
 
@@ -86,14 +108,13 @@
         android:id="@+id/editText_stadt"
         android:layout_width="230dp"
         android:layout_height="31dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:background="#C4C4C4"
         android:ems="10"
+        android:hint="@string/stadt"
         android:inputType="textPersonName"
-        android:text="@string/stadt"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.209"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_strasse" />
 
@@ -102,37 +123,22 @@
         android:layout_width="78dp"
         android:layout_height="31dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="56dp"
         android:background="#C4C4C4"
         android:ems="10"
+        android:hint="@string/plz"
         android:inputType="textPersonName"
-        android:text="@string/plz"
+
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
-        app:layout_constraintStart_toEndOf="@+id/editText_stadt"
         app:layout_constraintTop_toBottomOf="@+id/editText_hausnummer" />
-
-    <EditText
-        android:id="@+id/editText_hausnummer"
-        android:layout_width="78dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="16dp"
-        android:background="#C4C4C4"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/hausnummer"
-        android:textSize="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
-        app:layout_constraintStart_toEndOf="@+id/editText_strasse"
-        app:layout_constraintTop_toBottomOf="@+id/editText_Nachname" />
-
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="325dp"
         android:layout_height="81dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
+        android:checked="false"
         android:text="@string/datenschutzerklaerung"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.441"
