@@ -9,7 +9,7 @@
         android:orderInCategory="300"
         android:title="@string/info"
         android:icon="@drawable/ic_baseline_info_24"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_edit"
         android:orderInCategory="200"

@@ -49,13 +49,13 @@ class PermissionsFragment : Fragment(),
         if (!isChecked) { return }
 
         if (buttonView == notifications_switch)
-            service.enableNotifications(activity!!)
+            service.enableNotifications(requireActivity())
 
         if (buttonView == location_switch)
-            service.enableLocation(activity!!)
+            service.enableLocation(requireActivity())
 
         if (buttonView == bluetooth_switch)
-            service.enableBluetooth(activity!!)
+            service.enableBluetooth(requireActivity())
 
         refreshSwitches()
     }

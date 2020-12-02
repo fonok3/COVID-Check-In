@@ -36,7 +36,7 @@ class FileBasedCustomerPersonalDataService(private val userDataFileName: String 
     }
 
     override fun save(customerPersonalData: CustomerPersonalData?) {
-        TODO("Not yet implemented")
+        currentUserPersonalData = customerPersonalData
     }
 
     /**
