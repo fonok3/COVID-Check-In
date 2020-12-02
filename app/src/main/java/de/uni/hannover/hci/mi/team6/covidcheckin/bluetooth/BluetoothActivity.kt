@@ -23,6 +23,8 @@ import kotlinx.android.synthetic.main.bluetooth_activity.*
 
 class BluetoothActivity : AppCompatActivity() {
 
+    var bluetoothActive: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.bluetooth_activity)
