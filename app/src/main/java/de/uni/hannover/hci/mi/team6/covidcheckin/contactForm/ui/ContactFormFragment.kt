@@ -1,11 +1,13 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import kotlinx.android.synthetic.visitor.fragment_contact_form.*
@@ -53,6 +55,8 @@ class ContactFormFragment : Fragment() {
                     phoneNumber
                 )
             )
+            val intent = Intent(activity, BluetoothActivity::class.java)
+            startActivity(intent)
 
         }
     }
