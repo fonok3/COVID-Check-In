@@ -36,13 +36,13 @@ class ContactFormFragment : Fragment() {
 
         weiter_button.setOnClickListener {
 
-            val firstName = editText_Vorname.toString()
-            val sectionName = this.editText_Nachname.toString()
-            val street = this.editText_strasse.toString()
-            val streetNumber = this.editText_hausnummer.toString()
-            val zipCode = this.editText_plz.toString()
-            val city = this.editText_stadt.toString()
-            val phoneNumber = this.editText_telefone.toString()
+            val firstName = editText_Vorname.text.toString()
+            val sectionName = this.editText_Nachname.text.toString()
+            val street = this.editText_strasse.text.toString()
+            val streetNumber = this.editText_hausnummer.text.toString()
+            val zipCode = this.editText_plz.text.toString()
+            val city = this.editText_stadt.text.toString()
+            val phoneNumber = this.editText_telefone.text.toString()
 
             ServicesModule.customerPersonalDataService.save(
                 CustomerPersonalData(

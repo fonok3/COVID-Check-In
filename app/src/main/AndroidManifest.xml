@@ -16,6 +16,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
         <activity android:name=".contactForm.ContactFormActivity" />
+        <activity android:name=".checkin.CheckinSuccessActivity" />
         <activity android:name=".main.MainActivity" />
         <activity android:name=".permission.PermissionsActivity">
             <intent-filter>

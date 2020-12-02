@@ -14,7 +14,7 @@
     <string name="go_on">Continue</string>
     <string name="channel_name">Restaurantdetection</string>
     <string name="channel_description">Covid Checkin Restaurant Detection Notifications</string>
-    <string name="ask_for_data_transmission">Sollen die untenstehenden Daten an das \"%1$s\" übertragen werden?</string>
+    <string name="ask_for_data_transmission">Sollen die untenstehenden Daten an das Restaurant \"%1$s\" übertragen werden?</string>
     <string name="no_button_text">NEIN</string>
     <string name="yes_button_text">JA</string>
     <string name="str_checkin_success">Erfolgreich registriert</string>

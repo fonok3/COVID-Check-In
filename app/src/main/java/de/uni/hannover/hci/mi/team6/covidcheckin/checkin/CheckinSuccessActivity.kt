@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.checkin_success_layout.*
 
 class CheckinSuccessActivity : AppCompatActivity() {
 
-    private val restaurantName = "Muster Restaurant"
+    private val restaurantName = "Francesca & Fratelli" //TODO Namen dynamisch anpassen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
