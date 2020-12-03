@@ -5,7 +5,7 @@
     android:id="@+id/contact_form_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".contactForm.ContactFormActivity">
+    tools:context=".de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity">
 
     <TextView
         android:id="@+id/textView"

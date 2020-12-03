@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
-import kotlinx.android.synthetic.main.export_sheet_layout.*
+import kotlinx.android.synthetic.restaurant.export_sheet_layout.*
 import java.text.SimpleDateFormat
 import java.util.*
 

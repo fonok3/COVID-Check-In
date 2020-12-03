@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".contactForm.ContactFormActivity" />
+        <activity android:name="de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity" />
         <activity android:name=".checkin.CheckinSuccessActivity" />
         <activity android:name=".main.MainActivity" />
         <activity android:name=".permission.PermissionsActivity">
@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".bluetooth.BluetoothActivity"
+        <activity android:name="de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity"
             android:theme="@style/BluetoothActivityStyle"/>
         <activity android:name=".enterRestaurant.EnterRestaurantActivity" />
     </application>

@@ -39,4 +39,5 @@
     <string name="desc">Desc</string>
     <string name="info">Info</string>
     <string name="edit">Edit</string>
+    <string name="todo">TODO</string>
 </resources>
