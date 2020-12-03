@@ -15,9 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name="de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity" />
+        <activity android:name=".contactForm.ContactFormActivity" />
         <activity android:name=".checkin.CheckinSuccessActivity" />
-        <activity android:name=".main.MainActivity" />
         <activity android:name=".permission.PermissionsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
