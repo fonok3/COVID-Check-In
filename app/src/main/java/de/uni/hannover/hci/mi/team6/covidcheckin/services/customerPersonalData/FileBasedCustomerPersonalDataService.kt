@@ -20,7 +20,7 @@ class FileBasedCustomerPersonalDataService(private val userDataFileName: String 
      * The current Data object that contains the Customer Data for the current User.
      */
     override var currentUserPersonalData: CustomerPersonalData? by Delegates.observable(
-        CustomerPersonalData()
+        null
     ) { _, _, _ ->
         currentUserPersonalDataObservers.forEach {
             it()
@@ -28,7 +28,7 @@ class FileBasedCustomerPersonalDataService(private val userDataFileName: String 
     }
 
     init {
-        readUserdataFromFile()?.let { currentUserPersonalData }
+        readUserdataFromFile()?.let { currentUserPersonalData = it }
         currentUserPersonalDataObservers.add {
             val file = File(DefaultApplication.context.filesDir, userDataFileName)
             file.writeText(Json.encodeToString(currentUserPersonalData))

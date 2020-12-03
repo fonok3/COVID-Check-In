@@ -9,6 +9,7 @@ import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.permissions.PermissionsService
 import kotlinx.android.synthetic.main.permissions_fragment.*
@@ -41,7 +42,7 @@ class PermissionsFragment : Fragment(),
         bluetooth_switch.setOnCheckedChangeListener(this)
 
         continue_button.setOnClickListener {
-            val intent = Intent(activity, BluetoothActivity::class.java)
+            val intent = Intent(activity, ContactFormActivity::class.java)
             startActivity(intent)
         }
     }
