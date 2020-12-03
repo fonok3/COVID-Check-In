@@ -15,6 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
+        <activity android:name=".contactForm.ContactFormActivity" />
+        <activity android:name=".permission.PermissionsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".bluetooth.BluetoothActivity"
+            android:theme="@style/BluetoothActivityStyle"/>
     </application>
 
 </manifest>

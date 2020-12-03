@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="@string/str_export_data"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        android:textColor="#6b6b6b" />
+
+    <TextView
+        android:id="@+id/send_email"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:drawableStart="@drawable/ic_export_mail"
+        android:drawablePadding="28dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="@string/str_export_e_mail"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+    <TextView
+        android:id="@+id/save_internal"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:drawableStart="@drawable/ic_export_save"
+        android:drawablePadding="28dp"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="@string/str_export_save"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+</LinearLayout>
