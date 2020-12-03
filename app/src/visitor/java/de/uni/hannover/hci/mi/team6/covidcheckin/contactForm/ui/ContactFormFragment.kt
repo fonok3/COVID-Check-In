@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
-import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import kotlinx.android.synthetic.visitor.fragment_contact_form.*
@@ -55,8 +53,9 @@ class ContactFormFragment : Fragment() {
              * Returns if not all Data were given
              */
 
-            if(firstName.isEmpty() or secondName.isEmpty() or street.isEmpty() or streetNumber.isEmpty() or zipCode.isEmpty() or city.isEmpty() or phoneNumber.isEmpty()){
-                Toast.makeText(activity,"Bitte Geben Sie alle Ihre Daten ein.",Toast.LENGTH_SHORT).show()
+            if (firstName.isEmpty() or secondName.isEmpty() or street.isEmpty() or streetNumber.isEmpty() or zipCode.isEmpty() or city.isEmpty() or phoneNumber.isEmpty()) {
+                Toast.makeText(activity, "Bitte Geben Sie alle Ihre Daten ein.", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 
@@ -77,12 +76,15 @@ class ContactFormFragment : Fragment() {
              * To go to next Activity, the user must confirm the checkbox.
              */
 
-            if (checkBox.isChecked()){
+            if (checkBox.isChecked()) {
                 val intent = Intent(activity, BluetoothActivity::class.java)
                 startActivity(intent)
-            }
-            else{
-                Toast.makeText(activity, "Bitte akzeptieren Sie die Datenschutzerklärung.", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(
+                    activity,
+                    "Bitte akzeptieren Sie die Datenschutzerklärung.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
         }

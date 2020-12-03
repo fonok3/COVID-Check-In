@@ -8,13 +8,13 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 data class CustomerPersonalData(
-    val firstName: String = "Max",
-    val lastName: String = "Mustermann",
-    val street: String = "Heidestraße",
-    val streetNumber: String = "17",
-    val zipCode: String = "50667",
-    val city: String = "Köln",
-    val phoneNumber: String = "01234 567890"
+    val firstName: String,
+    val lastName: String,
+    val street: String,
+    val streetNumber: String,
+    val zipCode: String,
+    val city: String,
+    val phoneNumber: String
 ) {
     override fun toString(): String {
         return "$lastName, $firstName\n$street $streetNumber\n$zipCode $city\n$phoneNumber"

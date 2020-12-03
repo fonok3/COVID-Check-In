@@ -10,13 +10,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.checkin.CheckinSuccessActivity
-import de.uni.hannover.hci.mi.team6.covidcheckin.main.MainActivity
-import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 
 /**

@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
-import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.permissions.PermissionsService

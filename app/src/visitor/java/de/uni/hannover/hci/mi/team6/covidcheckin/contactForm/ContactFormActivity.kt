@@ -8,7 +8,6 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ui.ContactFormFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
-import kotlinx.android.synthetic.main.contact_form_activity.*
 
 class ContactFormActivity : AppCompatActivity() {
     companion object {
