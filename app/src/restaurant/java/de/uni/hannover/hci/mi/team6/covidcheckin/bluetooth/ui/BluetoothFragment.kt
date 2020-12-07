@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import de.uni.hannover.hci.mi.team6.covidcheckin.beacon.RestaurantBeacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import kotlinx.android.synthetic.main.bluetooth_fragment.*
 
@@ -41,11 +42,15 @@ class BluetoothFragment : Fragment() {
                 animatorInner.cancel()
                 animatorOuter.cancel()
                 (this.activity as BluetoothActivity).bluetoothActive = false
+
+                RestaurantBeacon.stop()
             } else {
                 floatingActionButton.alpha = 1f
                 (this.activity as BluetoothActivity).bluetoothActive = true
                 animatorInner.start()
                 animatorOuter.start()
+
+                RestaurantBeacon.start()
             }
         }
     }

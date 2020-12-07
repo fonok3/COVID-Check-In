@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import de.uni.hannover.hci.mi.team6.covidcheckin.beacon.RestaurantBeacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.permission.PermissionsActivity
@@ -24,6 +25,8 @@ class BluetoothActivity : AppCompatActivity() {
                 .commitNow()
         }
         setSupportActionBar(toolbar)
+
+        RestaurantBeacon.build(applicationContext)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

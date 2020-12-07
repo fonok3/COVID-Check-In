@@ -1,13 +1,16 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import de.uni.hannover.hci.mi.team6.covidcheckin.beacon.VisitorBeaconService
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import kotlinx.android.synthetic.main.bluetooth_fragment.*
 
@@ -34,22 +37,30 @@ class BluetoothFragment : Fragment() {
         }
         super.onActivityCreated(savedInstanceState)
         floatingActionButton.setOnClickListener {
-            if ((this.activity as BluetoothActivity).bluetoothActive) {
+            if (getBluetoothActivity().bluetoothActive) {
                 floatingActionButton.alpha = 0.5f
                 animationInner.alpha = 0.0f
                 animationOuter.alpha = 0.0f
                 animatorInner.cancel()
                 animatorOuter.cancel()
-                (this.activity as BluetoothActivity).bluetoothActive = false
+                getBluetoothActivity().bluetoothActive = false
+
+                getBluetoothActivity().stopFindingBeacon()
             } else {
                 floatingActionButton.alpha = 1f
-                (this.activity as BluetoothActivity).bluetoothActive = true
+                getBluetoothActivity().bluetoothActive = true
                 animatorInner.start()
                 animatorOuter.start()
+
+                getBluetoothActivity().startFindingBeacon()
             }
         }
         button.setOnClickListener {
-            (context as BluetoothActivity).changeToList()
+            getBluetoothActivity().changeToList()
         }
+    }
+
+    private fun getBluetoothActivity() : BluetoothActivity {
+        return this.activity as BluetoothActivity
     }
 }
