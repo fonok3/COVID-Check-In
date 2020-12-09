@@ -19,16 +19,19 @@
         <service
             android:name=".beacon.VisitorBeaconService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
         <activity android:name=".contactForm.ContactFormActivity" />
+        <activity android:name=".enterRestaurant.EnterRestaurantActivity" />
         <activity android:name=".permission.PermissionsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity"
-            android:theme="@style/BluetoothActivityStyle"/>
+        <activity
+            android:name="de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity"
+            android:theme="@style/BluetoothActivityStyle" />
     </application>
 
 </manifest>

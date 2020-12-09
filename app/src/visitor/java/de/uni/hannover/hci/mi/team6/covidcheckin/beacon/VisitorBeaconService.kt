@@ -103,7 +103,7 @@ class VisitorBeaconService : Service(), BeaconConsumer {
             Intent(
                 this,
                 EnterRestaurantActivity::class.java
-            ).apply { //TODO Link zur richtigen Activity
+            ).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
         val pendingIntent: PendingIntent =
