@@ -11,6 +11,10 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.beacon.RestaurantBeacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import kotlinx.android.synthetic.main.bluetooth_fragment.*
+import kotlinx.android.synthetic.main.bluetooth_fragment.animationInner
+import kotlinx.android.synthetic.main.bluetooth_fragment.animationOuter
+import kotlinx.android.synthetic.main.bluetooth_fragment.floatingActionButton
+import kotlinx.android.synthetic.restaurant.bluetooth_fragment.*
 
 class BluetoothFragment : Fragment() {
     
@@ -41,6 +45,9 @@ class BluetoothFragment : Fragment() {
                 animationOuter.alpha = 0.0f
                 animatorInner.cancel()
                 animatorOuter.cancel()
+                tipp.visibility = View.VISIBLE;
+                tippArrow.visibility = View.VISIBLE;
+
                 (this.activity as BluetoothActivity).bluetoothActive = false
 
                 RestaurantBeacon.stop()
@@ -49,7 +56,8 @@ class BluetoothFragment : Fragment() {
                 (this.activity as BluetoothActivity).bluetoothActive = true
                 animatorInner.start()
                 animatorOuter.start()
-
+                tipp.visibility = View.INVISIBLE;
+                tippArrow.visibility = View.INVISIBLE;
                 RestaurantBeacon.start()
             }
         }
