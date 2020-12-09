@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothFragment
 import kotlinx.android.synthetic.restaurant.export_sheet_layout.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,6 +21,10 @@ import java.util.*
  * exportSheet.show(supportFragmentManager, "ExportSheet")
  */
 class ExportSheetFragment : BottomSheetDialogFragment() {
+
+    companion object {
+        fun newInstance() = ExportSheetFragment()
+    }
 
     private val restaurantName = "Muster"
     private val healthDeptMail = "gesundheitsamt@email.de"

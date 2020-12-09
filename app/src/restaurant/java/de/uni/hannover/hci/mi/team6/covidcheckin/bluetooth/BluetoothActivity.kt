@@ -9,6 +9,7 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.beacon.RestaurantBeacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.exportsheet.ExportSheetFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.permission.PermissionsActivity
 import kotlinx.android.synthetic.main.bluetooth_activity.*
 
@@ -45,6 +46,10 @@ class BluetoothActivity : AppCompatActivity() {
             val intent = Intent(this, ContactFormActivity::class.java)
             intent.putExtra(ContactFormActivity.AUTO_FORWARD, false)
             startActivity(intent)
+            true
+        }
+        R.id.action_export -> {
+            //Call Export Sheet
             true
         }
         else -> false
