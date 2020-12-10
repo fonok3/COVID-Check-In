@@ -1,19 +1,25 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantInfo
 
-import de.uni.hannover.hci.mi.team6.covidcheckin.model.Restaurant
-import org.altbeacon.beacon.Beacon
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantInfo
 
 /**
- *
+ * Service that provides the current user data.
+ * @author Florian Herzog
  */
 interface RestaurantInfoService {
     /**
-     *
+     *  The currently saved user data if available.
      */
-    fun getInfoForRestaurant(beacon: Beacon, result: (Result<Restaurant>) -> Void)
+    val restaurantInfo: RestaurantInfo?
 
     /**
-     *
+     *  Saves new customer personal data.
      */
-    fun saveRestaurantInfo(restaurantInfo: Restaurant)
+    fun save(restaurantInfo: RestaurantInfo?)
+
+    /**
+     *  Adds a new observer for listening to changed personal data.
+     */
+    fun addCurrentRestaurantInfoObserver(observer: () -> Unit)
 }

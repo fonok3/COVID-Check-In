@@ -15,7 +15,7 @@ class ContactFormActivity : AppCompatActivity() {
     }
 
     private val customerPersonalDataService: CustomerPersonalDataService by lazy {
-        ServicesModule.customerPersonalDataService
+        ServicesModule.localCustomerPersonalDataService
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

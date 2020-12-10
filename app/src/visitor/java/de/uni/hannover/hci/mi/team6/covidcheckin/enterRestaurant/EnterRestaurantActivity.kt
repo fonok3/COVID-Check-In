@@ -49,12 +49,12 @@ class EnterRestaurantActivity : AppCompatActivity() {
         }
 
         updateUserPersonalData()
-        ServicesModule.customerPersonalDataService.addCurrentUserPersonalDataObserver { -> updateUserPersonalData() }
+        ServicesModule.localCustomerPersonalDataService.addCurrentUserPersonalDataObserver { -> updateUserPersonalData() }
     }
 
     private fun updateUserPersonalData() {
         userPersonalDataView.text =
-            ServicesModule.customerPersonalDataService.currentUserPersonalData?.toString()
+            ServicesModule.localCustomerPersonalDataService.currentUserPersonalData?.toString()
                 ?: "No Saved Data"
         //TODO open contact form if no data saved
     }
