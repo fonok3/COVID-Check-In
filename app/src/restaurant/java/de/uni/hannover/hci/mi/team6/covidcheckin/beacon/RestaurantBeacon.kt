@@ -1,9 +1,11 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.beacon
 
+import android.app.Service
 import android.bluetooth.le.AdvertiseCallback
 import android.bluetooth.le.AdvertiseSettings
 import android.content.Context
 import android.util.Log
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import org.altbeacon.beacon.Beacon
 import org.altbeacon.beacon.BeaconParser
 import org.altbeacon.beacon.BeaconTransmitter
@@ -17,9 +19,9 @@ class RestaurantBeacon {
 
         fun build(applicationContext : Context) {
             beacon = Beacon.Builder()
-                .setId1("2f234454-cf6d-4a0f-adf2-f4911ba9ffa6")
-                .setId2("1")
-                .setId3("2")
+                .setId1(ServicesModule.beaconServiceID)
+                .setId2(ServicesModule.beaconMajor)
+                .setId3(ServicesModule.beaconMinor)
                 .setManufacturer(0x0118) // Radius Networks.  Change this for other beacon layouts
                 .setTxPower(-59)
                 .setDataFields(LongArray(1){0}.asList()) // Remove this for beacon layouts without d: fields

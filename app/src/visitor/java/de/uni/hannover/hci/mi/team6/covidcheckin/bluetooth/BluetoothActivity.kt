@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.beacon.VisitorBeaconService
@@ -11,6 +12,7 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothListFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ContactFormActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.permission.PermissionsActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import kotlinx.android.synthetic.main.bluetooth_activity.*
 
 class BluetoothActivity : AppCompatActivity() {
@@ -26,6 +28,22 @@ class BluetoothActivity : AppCompatActivity() {
                 .commitNow()
         }
         setSupportActionBar(toolbar)
+
+        /*ServicesModule.restaurantsInfoService.getInfoForRestaurant(
+            de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon(
+                ServicesModule.beaconServiceID,
+                ServicesModule.beaconMajor,
+                ServicesModule.beaconMinor
+            )
+        ) {
+            it.getOrNull()?.let { restaurant ->
+                Toast.makeText(
+                    this,
+                    "Restaurant betreten: " + restaurant.name,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

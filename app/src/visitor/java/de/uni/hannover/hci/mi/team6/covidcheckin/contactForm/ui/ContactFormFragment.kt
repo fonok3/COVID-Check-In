@@ -59,7 +59,7 @@ class ContactFormFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            ServicesModule.customerPersonalDataService.save(
+            ServicesModule.localCustomerPersonalDataService.save(
                 CustomerPersonalData(
                     firstName,
                     secondName,

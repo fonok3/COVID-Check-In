@@ -7,9 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.firebase.FirebaseApp
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.Address
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantInfo
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
 
@@ -39,8 +43,6 @@ class ContactFormFragment : Fragment() {
 
 
         weiter_button.setOnClickListener {
-
-
             val firstName = this.editText_Vorname.text.toString().trim()
             val secondName = this.editText_Nachname.text.toString().trim()
             val street = this.editText_strasse.text.toString().trim()
@@ -59,7 +61,7 @@ class ContactFormFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            ServicesModule.customerPersonalDataService.save(
+            ServicesModule.localCustomerPersonalDataService.save(
                 CustomerPersonalData(
                     firstName,
                     secondName,
@@ -71,6 +73,17 @@ class ContactFormFragment : Fragment() {
                 )
             )
 
+            ServicesModule.localRestaurantDataService.save(
+                RestaurantInfo(
+                    firstName,
+                    Beacon(
+                        ServicesModule.beaconServiceID,
+                        ServicesModule.beaconMajor,
+                        ServicesModule.beaconMajor
+                    ),
+                    Address(street, streetNumber.toInt(), zipCode.toInt(), city)
+                )
+            )
 
             /**
              * To go to next Activity, the user must confirm the checkbox.

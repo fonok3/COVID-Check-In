@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "375038952442",
+    "project_id": "corona-check-in",
+    "storage_bucket": "corona-check-in.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375038952442:android:f17a4ad29ebd82428a9a43",
+        "android_client_info": {
+          "package_name": "de.uni.hannover.hci.mi.team6.covidcheckin.restaurant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375038952442-38csml540c9cfoelk24k4dmicascglbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8WZIjlwJpzMLDUI1tyYU0tjEbbkCVkF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375038952442-38csml540c9cfoelk24k4dmicascglbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:375038952442:android:a4d9300a41f6355c8a9a43",
+        "android_client_info": {
+          "package_name": "de.uni.hannover.hci.mi.team6.covidcheckin.visitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "375038952442-38csml540c9cfoelk24k4dmicascglbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8WZIjlwJpzMLDUI1tyYU0tjEbbkCVkF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "375038952442-38csml540c9cfoelk24k4dmicascglbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
