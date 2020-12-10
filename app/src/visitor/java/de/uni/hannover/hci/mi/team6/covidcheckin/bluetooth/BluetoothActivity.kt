@@ -29,7 +29,7 @@ class BluetoothActivity : AppCompatActivity() {
         }
         setSupportActionBar(toolbar)
 
-        ServicesModule.restaurantsInfoService.getInfoForRestaurant(
+        /*ServicesModule.restaurantsInfoService.getInfoForRestaurant(
             de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon(
                 ServicesModule.beaconServiceID,
                 ServicesModule.beaconMajor,
@@ -43,7 +43,7 @@ class BluetoothActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG
                 ).show()
             }
-        }
+        }*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
