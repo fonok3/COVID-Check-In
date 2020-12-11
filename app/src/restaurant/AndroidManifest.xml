@@ -26,6 +26,17 @@
         <activity
             android:name=".bluetooth.BluetoothActivity"
             android:theme="@style/BluetoothActivityStyle" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="de.uni.hannover.hci.mi.team6.covidcheckin.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
     </application>
 
 </manifest>

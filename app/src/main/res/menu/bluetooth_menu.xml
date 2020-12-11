@@ -16,4 +16,10 @@
         android:title="@string/edit"
         android:icon="@drawable/ic_baseline_edit_24"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/action_export"
+        android:orderInCategory="300"
+        android:title="@string/export"
+        android:icon="@drawable/ic_export_save"
+        app:showAsAction="always" />
 </menu>

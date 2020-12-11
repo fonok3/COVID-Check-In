@@ -12,10 +12,6 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.visitorManualContactForm.ui.VisitorManualContactFormFragment
 
 class VisitorManualContactFormActivity : AppCompatActivity() {
-    companion object {
-        const val AUTO_FORWARD = "AUTO_FORWARD"
-    }
-
     private val customerPersonalDataService: CustomerPersonalDataService by lazy {
         ServicesModule.customerPersonalDataService
     }
@@ -31,15 +27,6 @@ class VisitorManualContactFormActivity : AppCompatActivity() {
                     VisitorManualContactFormFragment.newInstance()
                 )
                 .commitNow()
-        }
-
-        if (customerPersonalDataService.currentUserPersonalData != null && intent.extras?.get(
-                AUTO_FORWARD
-            ) as? Boolean != false
-        ) {
-            val intent = Intent(this, BluetoothActivity::class.java)
-            finish()
-            startActivity(intent)
         }
     }
 }

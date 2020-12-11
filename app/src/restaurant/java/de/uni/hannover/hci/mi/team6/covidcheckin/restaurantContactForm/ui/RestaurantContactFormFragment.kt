@@ -62,8 +62,8 @@ class RestaurantContactFormFragment : Fragment() {
             ServicesModule.restaurantDataService.save(
                 RestaurantData(
                     restaurantName,
-                    ownerName.split(",")[1].trim(),
-                    ownerName.split(",")[0].trim(),
+                    ownerName,
+                    ownerName,
                     street,
                     streetNumber,
                     zipCode,
