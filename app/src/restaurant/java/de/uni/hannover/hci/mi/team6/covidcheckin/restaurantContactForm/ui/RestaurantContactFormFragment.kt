@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ui
+package de.uni.hannover.hci.mi.team6.covidcheckin.restaurantContactForm.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
-import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantData
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
 
@@ -20,9 +20,9 @@ import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
  * @author Anmar
  * */
 
-class ContactFormFragment : Fragment() {
+class RestaurantContactFormFragment : Fragment() {
     companion object {
-        fun newInstance() = ContactFormFragment()
+        fun newInstance() = RestaurantContactFormFragment()
     }
 
     override fun onCreateView(
@@ -41,8 +41,8 @@ class ContactFormFragment : Fragment() {
         weiter_button.setOnClickListener {
 
 
-            val firstName = this.editText_Vorname.text.toString().trim()
-            val secondName = this.editText_Nachname.text.toString().trim()
+            val restaurantName = this.editText_RestaurantName.text.toString().trim()
+            val ownerName = this.editText_OwnerName.text.toString().trim()
             val street = this.editText_strasse.text.toString().trim()
             val streetNumber = this.editText_hausnummer.text.toString().trim()
             val zipCode = this.editText_plz.text.toString().trim()
@@ -53,16 +53,17 @@ class ContactFormFragment : Fragment() {
              * Returns if not all Data were given
              */
 
-            if (firstName.isEmpty() or secondName.isEmpty() or street.isEmpty() or streetNumber.isEmpty() or zipCode.isEmpty() or city.isEmpty() or phoneNumber.isEmpty()) {
+            if (restaurantName.isEmpty() or ownerName.isEmpty() or street.isEmpty() or streetNumber.isEmpty() or zipCode.isEmpty() or city.isEmpty() or phoneNumber.isEmpty()) {
                 Toast.makeText(activity, "Bitte Geben Sie alle Ihre Daten ein.", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }
 
-            ServicesModule.customerPersonalDataService.save(
-                CustomerPersonalData(
-                    firstName,
-                    secondName,
+            ServicesModule.restaurantDataService.save(
+                RestaurantData(
+                    restaurantName,
+                    ownerName.split(",")[1].trim(),
+                    ownerName.split(",")[0].trim(),
                     street,
                     streetNumber,
                     zipCode,
