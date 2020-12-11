@@ -137,7 +137,7 @@
         android:background="#C4C4C4"
         android:ems="10"
         android:hint="@string/plz"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
