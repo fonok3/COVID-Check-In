@@ -105,9 +105,7 @@ class VisitorBeaconService : Service(), BeaconConsumer {
         }
     }
 
-    /**
-     * GEHÖRT HIER NICHT HIN, IST NUR ZUM AUSPROBIEREN BEVOR DIE NOTIFICATION AN DER RICHTIGEN STELLE ERSTELLT WIRD
-     */
+
     private fun notificationTest(restaurant: RestaurantInfo) {
         createNotificationChannel()
 
@@ -130,7 +128,7 @@ class VisitorBeaconService : Service(), BeaconConsumer {
             .setAutoCancel(true)
             .setStyle(
                 NotificationCompat.BigTextStyle()
-                    .bigText("Du hast das Restaurant \"Francesca & Fratelli\" betreten. Möchtest du automatisch deine Daten übertragen?")//TODO Dynamisch den Restaurantnamen übernehmen
+                    .bigText("Du hast das Restaurant ${restaurant.name} betreten. Möchtest du automatisch deine Daten übertragen?")//TODO Dynamisch den Restaurantnamen übernehmen
             )
 
         with(NotificationManagerCompat.from(DefaultApplication.context)) {
