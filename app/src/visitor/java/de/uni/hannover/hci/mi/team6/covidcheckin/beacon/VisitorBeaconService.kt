@@ -15,6 +15,8 @@ import androidx.core.app.NotificationManagerCompat
 import de.uni.hannover.hci.mi.team6.covidcheckin.DefaultApplication
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.enterRestaurant.EnterRestaurantActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantInfo
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import org.altbeacon.beacon.BeaconConsumer
 import org.altbeacon.beacon.BeaconManager
 import org.altbeacon.beacon.MonitorNotifier
@@ -41,12 +43,23 @@ class VisitorBeaconService : Service(), BeaconConsumer {
         beaconManager.removeAllMonitorNotifiers()
         beaconManager.addMonitorNotifier(object : MonitorNotifier {
             override fun didEnterRegion(region: Region?) {
-                Toast.makeText(applicationContext,"Restaurant betreten", Toast.LENGTH_LONG).show()
-                notificationTest()
+                ServicesModule.restaurantsInfoService.getInfoForRestaurant(
+                    de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon(
+                        region!!.id1.toString(),
+                        region.id2.toString(),
+                        region.id3.toString()
+                    )
+                ) {
+                    it.getOrNull()?.let { restaurant ->
+                        notificationTest(restaurant)
+                        Toast.makeText(applicationContext, "Restaurant betreten", Toast.LENGTH_LONG)
+                            .show()
+                    }
+                }
             }
 
             override fun didExitRegion(region: Region?) {
-                Toast.makeText(applicationContext,"Restaurant verlassen", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Restaurant verlassen", Toast.LENGTH_LONG).show()
             }
 
             override fun didDetermineStateForRegion(state: Int, region: Region?) {}
@@ -59,7 +72,8 @@ class VisitorBeaconService : Service(), BeaconConsumer {
             beaconManager.startMonitoringBeaconsInRegion(
                 Region("VisitorUniqueID", null, null, null)
             )
-        } catch (e: RemoteException) {}
+        } catch (e: RemoteException) {
+        }
         return START_STICKY
     }
 
@@ -69,13 +83,11 @@ class VisitorBeaconService : Service(), BeaconConsumer {
             beaconManager.stopMonitoringBeaconsInRegion(
                 Region("VisitorUniqueID", null, null, null)
             )
-        } catch (e: RemoteException) {}
+        } catch (e: RemoteException) {
+        }
         super.onDestroy()
     }
 
-    /**
-     * GEHÖRT HIER NICHT HIN, IST NUR ZUM AUSPROBIEREN BEVOR DIE NOTIFICATION AN DER RICHTIGEN STELLE ERSTELLT WIRD
-     */
     private fun createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
@@ -96,7 +108,7 @@ class VisitorBeaconService : Service(), BeaconConsumer {
     /**
      * GEHÖRT HIER NICHT HIN, IST NUR ZUM AUSPROBIEREN BEVOR DIE NOTIFICATION AN DER RICHTIGEN STELLE ERSTELLT WIRD
      */
-    private fun notificationTest() {
+    private fun notificationTest(restaurant: RestaurantInfo) {
         createNotificationChannel()
 
         val intent =
@@ -112,7 +124,7 @@ class VisitorBeaconService : Service(), BeaconConsumer {
         val builder = NotificationCompat.Builder(DefaultApplication.context, CHANNEL_ID)
 
             .setSmallIcon(R.mipmap.ic_launcher_foreground)
-            .setContentTitle("Restaurant betreten")
+            .setContentTitle("Restaurant betreten:" + restaurant.name)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)

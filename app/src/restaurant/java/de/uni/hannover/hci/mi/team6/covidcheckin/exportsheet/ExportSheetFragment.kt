@@ -64,13 +64,13 @@ class ExportSheetFragment : BottomSheetDialogFragment() {
         intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(healthDeptMail))
         intent.putExtra(
             Intent.EXTRA_SUBJECT,
-            "Registerdaten vom ${ServicesModule.restaurantDataService.currentRestaurantData?.restaurantName} Restaurant"
+            "Registerdaten vom ${ServicesModule.localRestaurantDataService.restaurantInfo?.name} Restaurant"
         )
         var formatter = SimpleDateFormat("dd.MM.yyyy")
         val date = formatter.format(Calendar.getInstance().time)
         intent.putExtra(
             Intent.EXTRA_TEXT,
-            "Sehr geehrte Damen und Herren,\n\nanbei sind die Registerdaten vom ${ServicesModule.restaurantDataService.currentRestaurantData?.restaurantName} Restaurant am $date.\n\nMit freundlichen Grüßen."
+            "Sehr geehrte Damen und Herren,\n\nanbei sind die Registerdaten vom ${ServicesModule.localRestaurantDataService.restaurantInfo?.name} Restaurant am $date.\n\nMit freundlichen Grüßen."
         );
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         intent.selector = emailIntent

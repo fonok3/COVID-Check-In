@@ -7,15 +7,15 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.restaurantContactForm.ui.RestaurantContactFormFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
-import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.RestaurantDataService
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantInfo.RestaurantInfoService
 
 class RestaurantContactFormActivity : AppCompatActivity() {
     companion object {
         const val AUTO_FORWARD = "AUTO_FORWARD"
     }
 
-    private val restaurantDataService: RestaurantDataService by lazy {
-        ServicesModule.restaurantDataService
+    private val restaurantDataService: RestaurantInfoService by lazy {
+        ServicesModule.localRestaurantDataService
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ class RestaurantContactFormActivity : AppCompatActivity() {
                 .commitNow()
         }
 
-        if (restaurantDataService.currentRestaurantData != null && intent.extras?.get(
+        if (restaurantDataService.restaurantInfo != null && intent.extras?.get(
                 AUTO_FORWARD
             ) as? Boolean != false
         ) {

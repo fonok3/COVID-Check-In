@@ -57,6 +57,9 @@ class BluetoothFragment : Fragment() {
                 animationOuter.alpha = 0.0f
                 animatorInner.cancel()
                 animatorOuter.cancel()
+                tipp.visibility = View.VISIBLE;
+                tippArrow.visibility = View.VISIBLE;
+
                 (this.activity as BluetoothActivity).bluetoothActive = false
 
                 RestaurantBeacon.stop()
@@ -65,7 +68,8 @@ class BluetoothFragment : Fragment() {
                 (this.activity as BluetoothActivity).bluetoothActive = true
                 animatorInner.start()
                 animatorOuter.start()
-
+                tipp.visibility = View.INVISIBLE;
+                tippArrow.visibility = View.INVISIBLE;
                 RestaurantBeacon.start()
             }
         }

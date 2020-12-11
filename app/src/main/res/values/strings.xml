@@ -39,6 +39,7 @@
     <string name="desc">Desc</string>
     <string name="info">Info</string>
     <string name="edit">Edit</string>
+    <string name="sucheAktivieren">Auf Los geht`s los!</string>
     <string name="todo">TODO</string>
     <string name="export">Export</string>
 </resources>

@@ -18,8 +18,8 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/action_export"
-        android:orderInCategory="300"
+        android:orderInCategory="200"
         android:title="@string/export"
-        android:icon="@drawable/ic_export_save"
+        android:icon="@drawable/baseline_mail_outline_white_24dp"
         app:showAsAction="always" />
 </menu>

@@ -48,6 +48,25 @@
         app:srcCompat="@drawable/animation_circle"
         android:contentDescription="@string/todo" />
 
+    <TextView
+        android:id="@+id/tipp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="@string/sucheAktivieren"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animationOuter" />
+
+    <ImageView
+        android:id="@+id/tippArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animationOuter"
+        app:srcCompat="@drawable/baseline_north_black_24dp" />
+
     <Button
         android:id="@+id/manualInsertButton"
         android:layout_width="wrap_content"

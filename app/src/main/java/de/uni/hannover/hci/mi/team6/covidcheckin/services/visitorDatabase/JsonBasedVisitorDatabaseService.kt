@@ -35,7 +35,7 @@ class JsonBasedVisitorDatabaseService(private val visitorDatabaseFileName: Strin
         val file = File(DefaultApplication.context.filesDir, csvExportFileName)
         file.parentFile.mkdirs()
         csvWriter().open(file) {
-            ServicesModule.restaurantDataService.currentRestaurantData?.let { writeRow("Restaurantname: " + it.restaurantName) }
+            ServicesModule.localRestaurantDataService.restaurantInfo?.let { writeRow("Restaurantname: " + it.name) }
             writeRow(
                 "Datum",
                 "Vorname",

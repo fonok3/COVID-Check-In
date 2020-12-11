@@ -9,7 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.Address
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantData
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantInfo
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
 
@@ -59,16 +62,16 @@ class RestaurantContactFormFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            ServicesModule.restaurantDataService.save(
-                RestaurantData(
+            //TODO Owner hier nicht wichtig?
+            ServicesModule.localRestaurantDataService.save(
+                RestaurantInfo(
                     restaurantName,
-                    ownerName,
-                    ownerName,
-                    street,
-                    streetNumber,
-                    zipCode,
-                    city,
-                    phoneNumber
+                    Beacon(
+                        ServicesModule.beaconServiceID,
+                        ServicesModule.beaconMajor,
+                        ServicesModule.beaconMajor
+                    ),
+                    Address(street, streetNumber.toInt(), zipCode.toInt(), city)
                 )
             )
 

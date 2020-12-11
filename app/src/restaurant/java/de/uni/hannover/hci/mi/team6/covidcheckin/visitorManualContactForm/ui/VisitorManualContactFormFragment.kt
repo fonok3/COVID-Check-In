@@ -39,8 +39,6 @@ class VisitorManualContactFormFragment : Fragment() {
 
 
         weiter_button.setOnClickListener {
-
-
             val firstName = this.editText_Vorname.text.toString().trim()
             val secondName = this.editText_Nachname.text.toString().trim()
             val street = this.editText_strasse.text.toString().trim()
