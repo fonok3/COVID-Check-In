@@ -28,22 +28,6 @@ class BluetoothActivity : AppCompatActivity() {
                 .commitNow()
         }
         setSupportActionBar(toolbar)
-
-        /*ServicesModule.restaurantsInfoService.getInfoForRestaurant(
-            de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon(
-                ServicesModule.beaconServiceID,
-                ServicesModule.beaconMajor,
-                ServicesModule.beaconMinor
-            )
-        ) {
-            it.getOrNull()?.let { restaurant ->
-                Toast.makeText(
-                    this,
-                    "Restaurant betreten: " + restaurant.name,
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }*/
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
