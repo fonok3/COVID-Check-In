@@ -179,7 +179,7 @@ class ContactFormFragment : Fragment() {
                         ServicesModule.beaconMajor,
                         ServicesModule.beaconMajor
                     ),
-                    Address(street, streetNumber.toInt(), zipCode.toInt(), city)
+                    Address(street, streetNumber, zipCode.toInt(), city)
                 )
             )
 

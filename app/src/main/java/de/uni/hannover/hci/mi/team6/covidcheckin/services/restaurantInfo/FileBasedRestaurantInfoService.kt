@@ -14,7 +14,7 @@ import kotlin.properties.Delegates
  * Service that provides the current user data. Saves the data locally and loads it when needed.
  * @author Elias
  */
-class FileBasedRestaurantInfoService(private val userDataFileName: String = "restaurantData.json") :
+class FileBasedRestaurantInfoService(private val userDataFileName: String = "restaurantInfoData.json") :
     RestaurantInfoService {
     private val currentRestaurantInfoObservers = mutableListOf<() -> Unit>()
 
