@@ -1,21 +1,21 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.contactForm
+package de.uni.hannover.hci.mi.team6.covidcheckin.restaurantContactForm
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
-import de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ui.ContactFormFragment
+import de.uni.hannover.hci.mi.team6.covidcheckin.restaurantContactForm.ui.RestaurantContactFormFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
-import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantInfo.RestaurantInfoService
 
-class ContactFormActivity : AppCompatActivity() {
+class RestaurantContactFormActivity : AppCompatActivity() {
     companion object {
         const val AUTO_FORWARD = "AUTO_FORWARD"
     }
 
-    private val customerPersonalDataService: CustomerPersonalDataService by lazy {
-        ServicesModule.localCustomerPersonalDataService
+    private val restaurantDataService: RestaurantInfoService by lazy {
+        ServicesModule.localRestaurantDataService
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,11 +24,11 @@ class ContactFormActivity : AppCompatActivity() {
         setContentView(R.layout.contact_form_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.contact_form_container, ContactFormFragment.newInstance())
+                .replace(R.id.contact_form_container, RestaurantContactFormFragment.newInstance())
                 .commitNow()
         }
 
-        if (customerPersonalDataService.currentUserPersonalData != null && intent.extras?.get(
+        if (restaurantDataService.restaurantInfo != null && intent.extras?.get(
                 AUTO_FORWARD
             ) as? Boolean != false
         ) {

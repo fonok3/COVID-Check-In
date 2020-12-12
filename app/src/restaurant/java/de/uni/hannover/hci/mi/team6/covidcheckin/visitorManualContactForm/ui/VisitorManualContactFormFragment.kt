@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ui
+package de.uni.hannover.hci.mi.team6.covidcheckin.visitorManualContactForm.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,15 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.google.firebase.FirebaseApp
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
-import de.uni.hannover.hci.mi.team6.covidcheckin.model.Address
-import de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
-import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantInfo
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
-import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
+import kotlinx.android.synthetic.restaurant.fragment_visitor_manual_contact_form.*
 
 
 /**
@@ -24,16 +20,16 @@ import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
  * @author Anmar
  * */
 
-class ContactFormFragment : Fragment() {
+class VisitorManualContactFormFragment : Fragment() {
     companion object {
-        fun newInstance() = ContactFormFragment()
+        fun newInstance() = VisitorManualContactFormFragment()
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_contact_form, container, false)
+        return inflater.inflate(R.layout.fragment_visitor_manual_contact_form, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -61,7 +57,7 @@ class ContactFormFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            ServicesModule.localCustomerPersonalDataService.save(
+            ServicesModule.visitorDatabaseService.enterVisitor(
                 CustomerPersonalData(
                     firstName,
                     secondName,
@@ -73,17 +69,6 @@ class ContactFormFragment : Fragment() {
                 )
             )
 
-            ServicesModule.localRestaurantDataService.save(
-                RestaurantInfo(
-                    firstName,
-                    Beacon(
-                        ServicesModule.beaconServiceID,
-                        ServicesModule.beaconMajor,
-                        ServicesModule.beaconMajor
-                    ),
-                    Address(street, streetNumber, zipCode.toInt(), city)
-                )
-            )
 
             /**
              * To go to next Activity, the user must confirm the checkbox.
@@ -102,6 +87,4 @@ class ContactFormFragment : Fragment() {
 
         }
     }
-
-
 }
