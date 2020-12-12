@@ -10,7 +10,7 @@ import kotlinx.serialization.json.Json
 import java.io.File
 import kotlin.properties.Delegates
 
-class FileBasedRestaurantInfoService(private val userDataFileName: String = "restaurantData.json") :
+class FileBasedRestaurantInfoService(private val userDataFileName: String = "restaurantInfoData.json") :
     RestaurantInfoService {
     private val currentRestaurantInfoObservers = mutableListOf<() -> Unit>()
 

@@ -7,6 +7,7 @@ import com.google.firebase.ktx.Firebase
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.Address
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantInfo
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 
 class FirebaseRestaurantsInfoService : RestaurantsInfoService {
     companion object {
@@ -16,7 +17,16 @@ class FirebaseRestaurantsInfoService : RestaurantsInfoService {
     private val db = Firebase.firestore
 
     override fun getInfoForRestaurant(beacon: Beacon, result: (Result<RestaurantInfo>) -> Unit) {
-        db.collection("restaurants")
+        result(
+            Result.success(
+                RestaurantInfo(
+                    "Restaurant Name",
+                    Beacon(ServicesModule.beaconServiceID, ServicesModule.beaconMajor, ServicesModule.beaconMinor),
+                    Address("Straße 5", "5b", 30167, "Hannover")
+                )
+            )
+        )
+        /*db.collection("restaurants")
             .whereEqualTo("beacon.major", beacon.major)
             .whereEqualTo("beacon.minor", beacon.minor)
             .get().addOnSuccessListener { it ->
@@ -31,7 +41,7 @@ class FirebaseRestaurantsInfoService : RestaurantsInfoService {
                         )
                     )
                 }
-            }
+            }*/
     }
 
     @SuppressLint("LongLogTag")
