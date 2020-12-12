@@ -17,17 +17,18 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.enterRestaurant.EnterRestaurantActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantInfo
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
-import org.altbeacon.beacon.BeaconConsumer
-import org.altbeacon.beacon.BeaconManager
-import org.altbeacon.beacon.MonitorNotifier
-import org.altbeacon.beacon.Region
+import org.altbeacon.beacon.*
+import java.util.*
 
 
 class VisitorBeaconService : Service(), BeaconConsumer {
+    private val timeoutmilliseconds = 3000
 
     private lateinit var beaconManager: BeaconManager
     private val CHANNEL_ID = "channel_id_example_01"
     private val notificationId = 101
+
+    private val connectedBeacons = HashMap<Beacon, Long>()
 
     override fun onCreate() {
         super.onCreate()
@@ -41,47 +42,75 @@ class VisitorBeaconService : Service(), BeaconConsumer {
 
     override fun onBeaconServiceConnect() {
         beaconManager.removeAllMonitorNotifiers()
-        beaconManager.addMonitorNotifier(object : MonitorNotifier {
-            override fun didEnterRegion(region: Region?) {
-                ServicesModule.restaurantsInfoService.getInfoForRestaurant(
-                    de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon(
-                        region!!.id1.toString(),
-                        region.id2.toString(),
-                        region.id3.toString()
-                    )
-                ) {
-                    it.getOrNull()?.let { restaurant ->
-                        notificationTest(restaurant)
-                        Toast.makeText(applicationContext, "Restaurant betreten", Toast.LENGTH_LONG)
-                            .show()
-                    }
+        beaconManager.removeAllRangeNotifiers()
+        beaconManager.addRangeNotifier(object : RangeNotifier {
+            override fun didRangeBeaconsInRegion(beacons: Collection<Beacon>, region: Region) {
+                if (beacons.isNotEmpty()) {
+                    connectTo(beacons.first())
                 }
             }
-
-            override fun didExitRegion(region: Region?) {
-                Toast.makeText(applicationContext, "Restaurant verlassen", Toast.LENGTH_LONG).show()
-            }
-
-            override fun didDetermineStateForRegion(state: Int, region: Region?) {}
         })
+
+        try {
+            beaconManager.startRangingBeaconsInRegion(
+                Region(
+                    "MyUniqueID",
+                    Identifier.fromUuid(UUID.fromString(ServicesModule.beaconServiceID)),
+                    null,
+                    null
+                )
+            );
+        } catch (e: RemoteException) {
+            e.printStackTrace();
+        }
+    }
+
+    private fun connectTo(beacon: Beacon) {
+        if (!isConnectedTo(beacon)) {
+            ServicesModule.restaurantsInfoService.getInfoForRestaurant(
+                de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon(
+                    beacon.id1.toString(),
+                    beacon.id2.toString(),
+                    beacon.id3.toString()
+                )
+
+            ) {
+                it.getOrNull()?.let { restaurant ->
+                    notificationTest(restaurant)
+                    Toast.makeText(applicationContext, "Restaurant betreten", Toast.LENGTH_LONG)
+                        .show()
+                }
+            }
+        }
+        connectedBeacons.put(beacon, System.currentTimeMillis())
+    }
+
+    private fun isConnectedTo(beacon: Beacon): Boolean {
+        if (!connectedBeacons.contains(beacon)) return false
+        return System.currentTimeMillis() - connectedBeacons.get(beacon)!! < timeoutmilliseconds
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         // start finding restaurant beacon.
-        try {
-            beaconManager.startMonitoringBeaconsInRegion(
-                Region("VisitorUniqueID", null, null, null)
-            )
-        } catch (e: RemoteException) {
-        }
+//        try {
+//            beaconManager.startMonitoringBeaconsInRegion(
+//                Region("VisitorUniqueID", null, null, null)
+//            )
+//        } catch (e: RemoteException) {
+//        }
         return START_STICKY
     }
 
     override fun onDestroy() {
         // stop finding restaurant beacon
         try {
-            beaconManager.stopMonitoringBeaconsInRegion(
-                Region("VisitorUniqueID", null, null, null)
+            beaconManager.stopRangingBeaconsInRegion(
+                Region(
+                    "MyUniqueID",
+                    Identifier.fromUuid(UUID.fromString(ServicesModule.beaconServiceID)),
+                    null,
+                    null
+                )
             )
         } catch (e: RemoteException) {
         }

@@ -23,6 +23,7 @@
 
         <activity android:name=".contactForm.ContactFormActivity" />
         <activity android:name=".enterRestaurant.EnterRestaurantActivity" />
+        <activity android:name=".checkin.CheckinSuccessActivity" />
         <activity android:name=".permission.PermissionsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
