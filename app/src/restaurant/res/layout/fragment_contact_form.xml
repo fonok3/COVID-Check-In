@@ -16,18 +16,29 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.40"
+        app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15"
-        tools:layout_editor_absoluteX="58dp" />
+        app:layout_constraintVertical_bias="0.11" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/localsaving_info"
+        android:textColor="@color/Black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editText_RestaurantName"
+        android:id="@+id/editText_resturantname"
         android:layout_width="315dp"
         android:layout_height="31dp"
-        android:layout_marginTop="29dp"
-        android:background="#C4C4C4"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
         android:hint="@string/restaurant_name"
         android:inputType="textPersonName"
@@ -35,29 +46,44 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/editText_OwnerName"
+        android:id="@+id/editText_OwnerVorname"
         android:layout_width="315dp"
         android:layout_height="31dp"
         android:layout_marginTop="16dp"
-        android:background="#C4C4C4"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
-        android:hint="@string/besitzer_name"
+        android:hint="@string/vorname"
         android:inputType="textPersonName"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_RestaurantName" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_resturantname" />
+
+    <EditText
+        android:id="@+id/editText_OwnerNachname"
+        android:layout_width="315dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_border"
+        android:ems="10"
+        android:hint="@string/nachname"
+        android:inputType="textPersonName"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_OwnerVorname" />
 
     <EditText
         android:id="@+id/editText_telefone"
         android:layout_width="315dp"
         android:layout_height="31dp"
         android:layout_marginTop="16dp"
-        android:background="#C4C4C4"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
         android:hint="@string/telefone"
         android:inputType="phone"
@@ -74,7 +100,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="2dp"
-        android:background="#C4C4C4"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
         android:hint="@string/strasse"
         android:inputType="textPersonName"
@@ -82,7 +108,7 @@
         app:layout_constraintEnd_toStartOf="@+id/editText_hausnummer"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_OwnerName" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_OwnerNachname" />
 
     <EditText
         android:id="@+id/editText_stadt"
@@ -91,7 +117,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="2dp"
-        android:background="#C4C4C4"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
         android:hint="@string/stadt"
         android:inputType="textPersonName"
@@ -108,10 +134,10 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="46dp"
-        android:background="#C4C4C4"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
         android:hint="@string/plz"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -125,7 +151,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="46dp"
-        android:background="#C4C4C4"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
         android:hint="@string/hausnummer"
         android:inputType="textPersonName"
@@ -133,7 +159,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/editText_strasse"
-        app:layout_constraintTop_toBottomOf="@+id/editText_OwnerName" />
+        app:layout_constraintTop_toBottomOf="@+id/editText_OwnerNachname" />
 
 
     <CheckBox

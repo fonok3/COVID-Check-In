@@ -5,4 +5,6 @@
     <color name="colorDisabled">#9E9E9E</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="Black">#000000</color>
+    <color name="editTextNormal">#C4C4C4</color>
+    <color name="editTextWarning">#ffdede</color>
 </resources>
