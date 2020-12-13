@@ -10,10 +10,6 @@ import kotlinx.serialization.json.Json
 import java.io.File
 import kotlin.properties.Delegates
 
-/**
- * Service that provides the current user data. Saves the data locally and loads it when needed.
- * @author Elias
- */
 class FileBasedRestaurantInfoService(private val userDataFileName: String = "restaurantInfoData.json") :
     RestaurantInfoService {
     private val currentRestaurantInfoObservers = mutableListOf<() -> Unit>()
@@ -22,9 +18,6 @@ class FileBasedRestaurantInfoService(private val userDataFileName: String = "res
         currentRestaurantInfoObservers.add(observer)
     }
 
-    /**
-     * The current Data object that contains the Customer Data for the current User.
-     */
     override var restaurantInfo: RestaurantInfo? by Delegates.observable(
         null
     ) { _, _, _ ->

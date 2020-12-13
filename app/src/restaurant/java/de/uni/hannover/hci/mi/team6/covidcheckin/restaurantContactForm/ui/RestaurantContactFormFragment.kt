@@ -1,4 +1,4 @@
-package de.uni.hannover.hci.mi.team6.covidcheckin.contactForm.ui
+package de.uni.hannover.hci.mi.team6.covidcheckin.restaurantContactForm.ui
 
 import android.content.Intent
 import android.graphics.Color
@@ -13,7 +13,7 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.Address
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon
-import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantData
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantInfo
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
@@ -25,9 +25,9 @@ import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
  * @author Anmar
  * */
 
-class ContactFormFragment : Fragment() {
+class RestaurantContactFormFragment : Fragment() {
     companion object {
-        fun newInstance() = ContactFormFragment()
+        fun newInstance() = RestaurantContactFormFragment()
     }
 
     override fun onCreateView(
@@ -44,9 +44,9 @@ class ContactFormFragment : Fragment() {
 
 
         weiter_button.setOnClickListener {
-            val resturantName = this.editText_resturantname.text.toString().trim()
-            val firstName = this.editText_Vorname.text.toString().trim()
-            val secondName = this.editText_Nachname.text.toString().trim()
+            val restaurantName = this.editText_resturantname.text.toString().trim()
+            val ownerFirstName = this.editText_OwnerVorname.text.toString().trim()
+            val ownerLastName = this.editText_OwnerNachname.text.toString().trim()
             val street = this.editText_strasse.text.toString().trim()
             val streetNumber = this.editText_hausnummer.text.toString().trim()
             val zipCode = this.editText_plz.text.toString().trim()
@@ -56,124 +56,105 @@ class ContactFormFragment : Fragment() {
             /**
              * Returns if not all Data were given
              */
-            if (resturantName.isEmpty()){
+            if (restaurantName.isEmpty()) {
 
                 var bac: GradientDrawable = editText_resturantname.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
                 bac.setColor(getResources().getColor(R.color.editTextWarning))
-            }
-            else {
+            } else {
                 var bac: GradientDrawable = editText_resturantname.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
                 bac.setColor(getResources().getColor(R.color.editTextNormal))
             }
 
-            if (firstName.isEmpty()){
+            if (ownerFirstName.isEmpty()) {
 
-                var bac: GradientDrawable = editText_Vorname.background as GradientDrawable
+                var bac: GradientDrawable = editText_OwnerVorname.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
                 bac.setColor(getResources().getColor(R.color.editTextWarning))
-            }
-            else {
-                var bac: GradientDrawable = editText_Vorname.background as GradientDrawable
+            } else {
+                var bac: GradientDrawable = editText_OwnerVorname.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
                 bac.setColor(getResources().getColor(R.color.editTextNormal))
             }
 
-            if (secondName.isEmpty()){
+            if (ownerLastName.isEmpty()) {
 
 
-                var bac: GradientDrawable = editText_Nachname.background as GradientDrawable
+                var bac: GradientDrawable = editText_OwnerNachname.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
                 bac.setColor(getResources().getColor(R.color.editTextWarning))
-            }
-            else {
-                var bac: GradientDrawable = editText_Nachname.background as GradientDrawable
+            } else {
+                var bac: GradientDrawable = editText_OwnerNachname.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
                 bac.setColor(getResources().getColor(R.color.editTextNormal))
             }
 
-            if(street.isEmpty()){
+            if (street.isEmpty()) {
 
                 var bac: GradientDrawable = editText_strasse.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
                 bac.setColor(getResources().getColor(R.color.editTextWarning))
-            }
-            else {
+            } else {
                 var bac: GradientDrawable = editText_strasse.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
                 bac.setColor(getResources().getColor(R.color.editTextNormal))
             }
 
-            if(streetNumber.isEmpty()){
+            if (streetNumber.isEmpty()) {
 
                 var bac: GradientDrawable = editText_hausnummer.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
                 bac.setColor(getResources().getColor(R.color.editTextWarning))
-            }
-            else {
+            } else {
                 var bac: GradientDrawable = editText_hausnummer.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
                 bac.setColor(getResources().getColor(R.color.editTextNormal))
             }
 
-            if(zipCode.isEmpty()){
+            if (zipCode.isEmpty()) {
 
                 var bac: GradientDrawable = editText_plz.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
                 bac.setColor(getResources().getColor(R.color.editTextWarning))
-            }
-            else {
+            } else {
                 var bac: GradientDrawable = editText_plz.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
                 bac.setColor(getResources().getColor(R.color.editTextNormal))
             }
 
-            if(city.isEmpty()){
+            if (city.isEmpty()) {
 
                 var bac: GradientDrawable = editText_stadt.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
                 bac.setColor(getResources().getColor(R.color.editTextWarning))
-            }
-            else {
+            } else {
                 var bac: GradientDrawable = editText_stadt.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
                 bac.setColor(getResources().getColor(R.color.editTextNormal))
             }
 
-            if(phoneNumber.isEmpty()){
+            if (phoneNumber.isEmpty()) {
 
                 var bac: GradientDrawable = editText_telefone.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
                 bac.setColor(getResources().getColor(R.color.editTextWarning))
-            }
-            else {
+            } else {
                 var bac: GradientDrawable = editText_telefone.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
                 bac.setColor(getResources().getColor(R.color.editTextNormal))
             }
 
-            if (resturantName.isEmpty() or firstName.isEmpty() or secondName.isEmpty() or street.isEmpty() or streetNumber.isEmpty() or zipCode.isEmpty() or city.isEmpty() or phoneNumber.isEmpty()) {
+            if (restaurantName.isEmpty() or ownerFirstName.isEmpty() or ownerLastName.isEmpty() or street.isEmpty() or streetNumber.isEmpty() or zipCode.isEmpty() or city.isEmpty() or phoneNumber.isEmpty()) {
                 Toast.makeText(activity, "Bitte Geben Sie alle Ihre Daten ein.", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }
 
-            ServicesModule.localCustomerPersonalDataService.save(
-                CustomerPersonalData(
-                    firstName,
-                    secondName,
-                    street,
-                    streetNumber,
-                    zipCode,
-                    city,
-                    phoneNumber
-                )
-            )
-
+            //TODO Owner hier nicht wichtig?
             ServicesModule.localRestaurantDataService.save(
                 RestaurantInfo(
-                    firstName,
+                    restaurantName,
                     Beacon(
                         ServicesModule.beaconServiceID,
                         ServicesModule.beaconMajor,

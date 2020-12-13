@@ -42,4 +42,5 @@
     <string name="sucheAktivieren">Auf Los geht`s los!</string>
     <string name="todo">TODO</string>
     <string name="localsaving_info">Ihre Informationen werden lokal gespeichert.</string>
+    <string name="export">Export</string>
 </resources>

@@ -57,6 +57,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/animation_circle" />
+
     <TextView
         android:id="@+id/tippKunde"
         android:layout_width="wrap_content"

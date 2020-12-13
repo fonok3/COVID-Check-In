@@ -8,6 +8,8 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantInfo.FileBas
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantInfo.RestaurantInfoService
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantsInfo.FirebaseRestaurantsInfoService
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantsInfo.RestaurantsInfoService
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.visitorDatabase.JsonBasedVisitorDatabaseService
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.visitorDatabase.VisitorDatabaseService
 
 
 object ServicesModule {
@@ -31,11 +33,15 @@ object ServicesModule {
         FileBasedCustomerPersonalDataService()
     }
 
-    val localRestaurantDataService: RestaurantInfoService by lazy {
-        FileBasedRestaurantInfoService()
+    val visitorDatabaseService: VisitorDatabaseService by lazy {
+        JsonBasedVisitorDatabaseService()
     }
 
     val restaurantsInfoService: RestaurantsInfoService by lazy {
         FirebaseRestaurantsInfoService()
+    }
+
+    val localRestaurantDataService: RestaurantInfoService by lazy {
+        FileBasedRestaurantInfoService()
     }
 }
