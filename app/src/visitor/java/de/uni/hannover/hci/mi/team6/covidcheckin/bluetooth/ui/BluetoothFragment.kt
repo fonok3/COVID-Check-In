@@ -1,16 +1,13 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui
 
 import android.animation.ObjectAnimator
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
-import de.uni.hannover.hci.mi.team6.covidcheckin.beacon.VisitorBeaconService
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import kotlinx.android.synthetic.main.bluetooth_fragment.*
 

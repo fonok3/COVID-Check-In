@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.beacon.RestaurantBeacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer.BluetoothDataReceiver
 import de.uni.hannover.hci.mi.team6.covidcheckin.visitorManualContactForm.VisitorManualContactFormActivity
-import kotlinx.android.synthetic.main.bluetooth_fragment.*
 import kotlinx.android.synthetic.main.bluetooth_fragment.animationInner
 import kotlinx.android.synthetic.main.bluetooth_fragment.animationOuter
 import kotlinx.android.synthetic.main.bluetooth_fragment.floatingActionButton
