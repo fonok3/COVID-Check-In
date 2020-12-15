@@ -11,14 +11,16 @@ import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.beacon.RestaurantBeacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer.BluetoothDataReceiver
 import de.uni.hannover.hci.mi.team6.covidcheckin.visitorManualContactForm.VisitorManualContactFormActivity
-import kotlinx.android.synthetic.main.bluetooth_fragment.*
 import kotlinx.android.synthetic.main.bluetooth_fragment.animationInner
 import kotlinx.android.synthetic.main.bluetooth_fragment.animationOuter
 import kotlinx.android.synthetic.main.bluetooth_fragment.floatingActionButton
 import kotlinx.android.synthetic.restaurant.bluetooth_fragment.*
 
 class BluetoothFragment : Fragment() {
+
+    private var bltReceiver: BluetoothDataReceiver? = null
 
     companion object {
         fun newInstance() = BluetoothFragment()
@@ -63,6 +65,8 @@ class BluetoothFragment : Fragment() {
                 (this.activity as BluetoothActivity).bluetoothActive = false
 
                 RestaurantBeacon.stop()
+
+                bltReceiver!!.stop()    // stop listening to visitor device
             } else {
                 floatingActionButton.alpha = 1f
                 (this.activity as BluetoothActivity).bluetoothActive = true
@@ -70,8 +74,19 @@ class BluetoothFragment : Fragment() {
                 animatorOuter.start()
                 tipp.visibility = View.INVISIBLE;
                 tippArrow.visibility = View.INVISIBLE;
+
                 RestaurantBeacon.start()
+
+                // start listening to visitor device
+                bltReceiver = BluetoothDataReceiver()
+                bltReceiver!!.start()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        bltReceiver!!.stop()
     }
 }
