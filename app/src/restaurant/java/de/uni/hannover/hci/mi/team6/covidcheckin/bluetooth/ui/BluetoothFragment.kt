@@ -20,6 +20,8 @@ import kotlinx.android.synthetic.restaurant.bluetooth_fragment.*
 
 class BluetoothFragment : Fragment() {
 
+    private var bltReceiver: BluetoothDataReceiver? = null
+
     companion object {
         fun newInstance() = BluetoothFragment()
     }
@@ -63,6 +65,8 @@ class BluetoothFragment : Fragment() {
                 (this.activity as BluetoothActivity).bluetoothActive = false
 
                 RestaurantBeacon.stop()
+
+                bltReceiver!!.stop()    // stop listening to visitor device
             } else {
                 floatingActionButton.alpha = 1f
                 (this.activity as BluetoothActivity).bluetoothActive = true
@@ -70,8 +74,19 @@ class BluetoothFragment : Fragment() {
                 animatorOuter.start()
                 tipp.visibility = View.INVISIBLE;
                 tippArrow.visibility = View.INVISIBLE;
+
                 RestaurantBeacon.start()
+
+                // start listening to visitor device
+                bltReceiver = BluetoothDataReceiver()
+                bltReceiver!!.start()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        bltReceiver!!.stop()
     }
 }
