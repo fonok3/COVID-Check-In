@@ -31,7 +31,7 @@ class BluetoothActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.bluetooth_menu, menu)
+        menuInflater.inflate(R.menu.bluetooth_menu_export, menu)
         return true
     }
 

@@ -51,14 +51,6 @@ class BluetoothActivity : AppCompatActivity() {
         else -> false
     }
 
-    fun changeToList() {
-        supportFragmentManager.beginTransaction().setCustomAnimations(
-            R.anim.right_enter,
-            R.anim.left_exit
-        )
-            .replace(bluetoothLayout.id, BluetoothListFragment.newInstance()).commitNow()
-    }
-
 
     fun changeToBluetooth() {
         supportFragmentManager.beginTransaction().setCustomAnimations(

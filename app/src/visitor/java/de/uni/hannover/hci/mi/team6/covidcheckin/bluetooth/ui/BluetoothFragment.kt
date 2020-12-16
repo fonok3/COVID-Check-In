@@ -41,19 +41,18 @@ class BluetoothFragment : Fragment() {
                 animatorInner.cancel()
                 animatorOuter.cancel()
                 getBluetoothActivity().bluetoothActive = false
-
+                tippArrowKunde.visibility = View.VISIBLE
+                tippKunde.visibility = View.VISIBLE
                 getBluetoothActivity().stopFindingBeacon()
             } else {
                 floatingActionButton.alpha = 1f
                 getBluetoothActivity().bluetoothActive = true
                 animatorInner.start()
                 animatorOuter.start()
-
+                tippArrowKunde.visibility = View.INVISIBLE
+                tippKunde.visibility = View.INVISIBLE
                 getBluetoothActivity().startFindingBeacon()
             }
-        }
-        button.setOnClickListener {
-            getBluetoothActivity().changeToList()
         }
     }
 
