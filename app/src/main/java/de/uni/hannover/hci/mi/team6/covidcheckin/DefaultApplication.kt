@@ -2,7 +2,7 @@ package de.uni.hannover.hci.mi.team6.covidcheckin
 
 import android.app.Application
 import android.content.Context
-import com.google.firebase.FirebaseApp
+//import com.google.firebase.FirebaseApp
 
 /**
  * Application used to provide the application context in a static way
@@ -13,7 +13,7 @@ class DefaultApplication : Application() {
         super.onCreate()
         context = applicationContext
 
-        FirebaseApp.initializeApp(context)
+        //FirebaseApp.initializeApp(context)
     }
 
     companion object {
