@@ -2,6 +2,7 @@ package de.uni.hannover.hci.mi.team6.covidcheckin.enterRestaurant
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -34,11 +35,17 @@ class EnterRestaurantActivity : AppCompatActivity() {
         infoButton = findViewById(R.id.infoButton)
 
         infoButton.setOnClickListener {
-            Toast.makeText(
+            val t = Toast.makeText(
                 this,
                 "Your personal Data will be send directly to the Restaurant over Bluetooth.",
                 Toast.LENGTH_LONG
-            ).show()
+            )
+            t.setGravity(
+                Gravity.CENTER,
+                0,
+                -500
+            ) //TODO Positionierung nich schön gelöst (unterschiedliche Auflösungen)
+            t.show()
         }
 
         val restaurantName = "Francesca & Fratelli" //TODO set correct restaurantName
