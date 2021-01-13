@@ -7,8 +7,11 @@ import android.util.Log
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import de.uni.hannover.hci.mi.team6.covidcheckin.DefaultApplication
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.Address
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.Person
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantInfo
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 
 
 class FirebaseRestaurantsInfoService : RestaurantsInfoService {
@@ -19,31 +22,36 @@ class FirebaseRestaurantsInfoService : RestaurantsInfoService {
     private val db = Firebase.firestore
 
     override fun getInfoForRestaurant(beacon: Beacon, result: (Result<RestaurantInfo>) -> Unit) {
-        /*result(
-            Result.success(
-                RestaurantInfo(
-                    "Restaurant Name",
-                    Beacon(ServicesModule.beaconServiceID, ServicesModule.beaconMajor, ServicesModule.beaconMinor),
-                    Address("Straße 5", "5b", 30167, "Hannover")
-                )
-            )
-        )*/
-        /*db.collection("restaurants")
-            .whereEqualTo("beacon.major", beacon.major)
-            .whereEqualTo("beacon.minor", beacon.minor)
+        db.collection("restaurants")
+            // Todo: does not work
+            //.whereEqualTo("beacon.major", beacon.major)
+            //.whereEqualTo("beacon.minor", beacon.minor)
             .get().addOnSuccessListener { it ->
                 it.documents.firstOrNull()?.let { restaurant ->
                     result(
                         Result.success(
                             RestaurantInfo(
                                 restaurant.data!!["name"] as String,
-                                Beacon("", "", ""),
-                                Address("", 0, 0, "")
+                                Beacon(
+                                    ServicesModule.beaconServiceID,
+                                    restaurant.data!!["beacon.major"] as String,
+                                    restaurant.data!!["beacon.minor"] as String
+                                ),
+                                Address(
+                                    restaurant.data!!["address.street"] as String,
+                                    restaurant.data!!["address.streetNumber"] as String,
+                                    restaurant.data!!["address.zipCode"] as Int,
+                                    restaurant.data!!["address.city"] as String
+                                ),
+                                Person(
+                                    restaurant.data!!["owner.firstName"] as String,
+                                    restaurant.data!!["owner.lastName"] as String
+                                )
                             )
                         )
                     )
                 }
-            }*/
+            }
     }
 
     @SuppressLint("LongLogTag")
