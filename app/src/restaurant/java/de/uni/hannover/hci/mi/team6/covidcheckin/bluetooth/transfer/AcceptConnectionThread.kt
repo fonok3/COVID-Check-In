@@ -69,6 +69,6 @@ class AcceptConnectionThread : Thread() {
         }
         interrupt()
 
-        mReceiveThread!!.cancel()
+        mReceiveThread?.cancel()
     }
 }
