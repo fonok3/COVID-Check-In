@@ -11,10 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
-import de.uni.hannover.hci.mi.team6.covidcheckin.model.Address
-import de.uni.hannover.hci.mi.team6.covidcheckin.model.Beacon
-import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantData
-import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantInfo
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.*
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
 
@@ -25,6 +22,7 @@ import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
  * @author Anmar
  * */
 
+@Suppress("DEPRECATION")
 class RestaurantContactFormFragment : Fragment() {
     companion object {
         fun newInstance() = RestaurantContactFormFragment()
@@ -57,92 +55,83 @@ class RestaurantContactFormFragment : Fragment() {
              * Returns if not all Data were given
              */
             if (restaurantName.isEmpty()) {
-
-                var bac: GradientDrawable = editText_resturantname.background as GradientDrawable
+                val bac: GradientDrawable = editText_resturantname.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
-                bac.setColor(getResources().getColor(R.color.editTextWarning))
+                bac.setColor(resources.getColor(R.color.editTextWarning))
             } else {
-                var bac: GradientDrawable = editText_resturantname.background as GradientDrawable
+                val bac: GradientDrawable = editText_resturantname.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
-                bac.setColor(getResources().getColor(R.color.editTextNormal))
+                bac.setColor(resources.getColor(R.color.editTextNormal))
             }
 
             if (ownerFirstName.isEmpty()) {
-
-                var bac: GradientDrawable = editText_OwnerVorname.background as GradientDrawable
+                val bac: GradientDrawable = editText_OwnerVorname.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
-                bac.setColor(getResources().getColor(R.color.editTextWarning))
+                bac.setColor(resources.getColor(R.color.editTextWarning))
             } else {
-                var bac: GradientDrawable = editText_OwnerVorname.background as GradientDrawable
+                val bac: GradientDrawable = editText_OwnerVorname.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
-                bac.setColor(getResources().getColor(R.color.editTextNormal))
+                bac.setColor(resources.getColor(R.color.editTextNormal))
             }
 
             if (ownerLastName.isEmpty()) {
-
-
-                var bac: GradientDrawable = editText_OwnerNachname.background as GradientDrawable
+                val bac: GradientDrawable = editText_OwnerNachname.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
-                bac.setColor(getResources().getColor(R.color.editTextWarning))
+                bac.setColor(resources.getColor(R.color.editTextWarning))
             } else {
-                var bac: GradientDrawable = editText_OwnerNachname.background as GradientDrawable
+                val bac: GradientDrawable = editText_OwnerNachname.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
-                bac.setColor(getResources().getColor(R.color.editTextNormal))
+                bac.setColor(resources.getColor(R.color.editTextNormal))
             }
 
             if (street.isEmpty()) {
-
-                var bac: GradientDrawable = editText_strasse.background as GradientDrawable
+                val bac: GradientDrawable = editText_strasse.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
-                bac.setColor(getResources().getColor(R.color.editTextWarning))
+                bac.setColor(resources.getColor(R.color.editTextWarning))
             } else {
-                var bac: GradientDrawable = editText_strasse.background as GradientDrawable
+                val bac: GradientDrawable = editText_strasse.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
-                bac.setColor(getResources().getColor(R.color.editTextNormal))
+                bac.setColor(resources.getColor(R.color.editTextNormal))
             }
 
             if (streetNumber.isEmpty()) {
-
-                var bac: GradientDrawable = editText_hausnummer.background as GradientDrawable
+                val bac: GradientDrawable = editText_hausnummer.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
-                bac.setColor(getResources().getColor(R.color.editTextWarning))
+                bac.setColor(resources.getColor(R.color.editTextWarning))
             } else {
-                var bac: GradientDrawable = editText_hausnummer.background as GradientDrawable
+                val bac: GradientDrawable = editText_hausnummer.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
-                bac.setColor(getResources().getColor(R.color.editTextNormal))
+                bac.setColor(resources.getColor(R.color.editTextNormal))
             }
 
             if (zipCode.isEmpty()) {
-
-                var bac: GradientDrawable = editText_plz.background as GradientDrawable
+                val bac: GradientDrawable = editText_plz.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
-                bac.setColor(getResources().getColor(R.color.editTextWarning))
+                bac.setColor(resources.getColor(R.color.editTextWarning))
             } else {
-                var bac: GradientDrawable = editText_plz.background as GradientDrawable
+                val bac: GradientDrawable = editText_plz.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
-                bac.setColor(getResources().getColor(R.color.editTextNormal))
+                bac.setColor(resources.getColor(R.color.editTextNormal))
             }
 
             if (city.isEmpty()) {
-
-                var bac: GradientDrawable = editText_stadt.background as GradientDrawable
+                val bac: GradientDrawable = editText_stadt.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
-                bac.setColor(getResources().getColor(R.color.editTextWarning))
+                bac.setColor(resources.getColor(R.color.editTextWarning))
             } else {
-                var bac: GradientDrawable = editText_stadt.background as GradientDrawable
+                val bac: GradientDrawable = editText_stadt.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
-                bac.setColor(getResources().getColor(R.color.editTextNormal))
+                bac.setColor(resources.getColor(R.color.editTextNormal))
             }
 
             if (phoneNumber.isEmpty()) {
-
-                var bac: GradientDrawable = editText_telefone.background as GradientDrawable
+                val bac: GradientDrawable = editText_telefone.background as GradientDrawable
                 bac.setStroke(2, Color.RED)
-                bac.setColor(getResources().getColor(R.color.editTextWarning))
+                bac.setColor(resources.getColor(R.color.editTextWarning))
             } else {
-                var bac: GradientDrawable = editText_telefone.background as GradientDrawable
+                val bac: GradientDrawable = editText_telefone.background as GradientDrawable
                 bac.setStroke(2, Color.BLACK)
-                bac.setColor(getResources().getColor(R.color.editTextNormal))
+                bac.setColor(resources.getColor(R.color.editTextNormal))
             }
 
             if (restaurantName.isEmpty() or ownerFirstName.isEmpty() or ownerLastName.isEmpty() or street.isEmpty() or streetNumber.isEmpty() or zipCode.isEmpty() or city.isEmpty() or phoneNumber.isEmpty()) {
@@ -160,7 +149,11 @@ class RestaurantContactFormFragment : Fragment() {
                         ServicesModule.beaconMajor,
                         ServicesModule.beaconMajor
                     ),
-                    Address(street, streetNumber, zipCode.toInt(), city)
+                    Address(street, streetNumber, zipCode.toInt(), city),
+                    Person(
+                        editText_OwnerVorname.text.toString().trim(),
+                        editText_OwnerNachname.text.toString().trim()
+                    )
                 )
             )
 
@@ -168,7 +161,7 @@ class RestaurantContactFormFragment : Fragment() {
              * To go to next Activity, the user must confirm the checkbox.
              */
 
-            if (checkBox.isChecked()) {
+            if (checkBox.isChecked) {
                 val intent = Intent(activity, BluetoothActivity::class.java)
                 startActivity(intent)
             } else {
