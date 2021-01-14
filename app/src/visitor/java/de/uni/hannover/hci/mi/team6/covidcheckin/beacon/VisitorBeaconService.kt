@@ -77,6 +77,12 @@ class VisitorBeaconService : Service(), BeaconConsumer {
             ) {
                 it.getOrNull()?.let { restaurant ->
                     notificationTest(restaurant)
+
+                    //TODO das könnte man mit sicherheit schöner lösen
+                    val intent = Intent(this, EnterRestaurantActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(intent)
+
                     Toast.makeText(applicationContext, "Restaurant betreten", Toast.LENGTH_LONG)
                         .show()
                 }
