@@ -1,16 +1,18 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer
 
-// TODO use this in the sending data activity
-class BluetoothDataSender(targetMacAddress: String) {
+import android.app.Activity
+import android.util.Log
 
-    private val deviceMacAddress: String = targetMacAddress
-    private val connectThread: ConnectThread = ConnectThread(deviceMacAddress)
+class BluetoothDataSender(activity: Activity, deviceName: String) {
+
+    private val discoverThread: DiscoverThread = DiscoverThread(activity, deviceName)
 
     fun start() {
-        connectThread.start()
+        Log.d("BLTData", "Init")
+        discoverThread.start()
     }
 
     fun stop() {
-        connectThread.cancel()
+        discoverThread.cancel()
     }
 }

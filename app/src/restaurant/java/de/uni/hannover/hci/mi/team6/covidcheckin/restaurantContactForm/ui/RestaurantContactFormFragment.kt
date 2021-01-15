@@ -149,7 +149,7 @@ class RestaurantContactFormFragment : Fragment() {
                         ServicesModule.beaconMajor,
                         ServicesModule.beaconMajor
                     ),
-                    Address(street, streetNumber, zipCode.toInt(), city),
+                    Address(street, streetNumber, zipCode.toLong(), city),
                     Person(
                         editText_OwnerVorname.text.toString().trim(),
                         editText_OwnerNachname.text.toString().trim()

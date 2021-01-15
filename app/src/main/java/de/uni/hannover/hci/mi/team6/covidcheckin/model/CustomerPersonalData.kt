@@ -19,4 +19,8 @@ data class CustomerPersonalData(
     override fun toString(): String {
         return "$lastName, $firstName\n$street $streetNumber\n$zipCode $city\n$phoneNumber"
     }
+
+    fun toCsvForm(): String {
+        return "$lastName,$firstName,$street,$streetNumber,$zipCode,$city,$phoneNumber"
+    }
 }

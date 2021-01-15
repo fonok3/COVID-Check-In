@@ -14,7 +14,7 @@ class ReceiveDataThread(socket: BluetoothSocket) : Thread() {
     private val TAG = "ReceiveThread"
 
     init {
-        Log.d(TAG, "ConnectedThread: Starting.")
+        Log.d(TAG, "ReceiveThread: Starting.")
 
         var tmpIn: InputStream? = null
         var tmpOut: OutputStream? = null
@@ -38,9 +38,9 @@ class ReceiveDataThread(socket: BluetoothSocket) : Thread() {
             // Read from the InputStream
             try {
                 bytes = mInStream!!.read(buffer)
-                val incomingMessage = String(buffer, 0, bytes)
+                val visitor_info = String(buffer, 0, bytes)
                 //TODO save incoming visitor info in database
-                Log.d(TAG, "InputStream: $incomingMessage")
+                Log.d(TAG, "InputStream: $visitor_info")
 
             } catch (e: IOException) {
                 Log.e(TAG, "write: Error reading Input Stream. " + e.message)

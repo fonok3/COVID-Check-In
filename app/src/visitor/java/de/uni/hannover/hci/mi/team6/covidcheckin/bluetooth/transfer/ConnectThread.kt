@@ -1,5 +1,6 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer
 
+import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
@@ -11,7 +12,7 @@ import java.util.*
  * Make a bluetooth connection to the given device
  * When connected, call the SendThread to send message
  */
-class ConnectThread (macAddress: String) : Thread() {
+class ConnectThread (macAddress: String, activity: Activity) : Thread() {
 
     private var mSocket: BluetoothSocket? = null
     private val TAG = "ConnectThread"
@@ -19,7 +20,7 @@ class ConnectThread (macAddress: String) : Thread() {
     private val MY_UUID = UUID.fromString("8ce255c0-200a-11e0-ac64-0800200c9a66")
     private val deviceMacAdress = macAddress
     private var mSendThread: SendDataThread? = null
-
+    private val mActivity = activity
 
     init {
         Log.d(TAG, "ConnectThread: started.")
@@ -63,7 +64,7 @@ class ConnectThread (macAddress: String) : Thread() {
             Log.d(TAG, "connected: Starting.")
 
             // Start the thread to send data
-            mSendThread = SendDataThread(mSocket!!)
+            mSendThread = SendDataThread(mSocket!!, mActivity)
             mSendThread?.start()
         }
     }

@@ -1,7 +1,13 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer
 
+import android.app.Activity
 import android.bluetooth.BluetoothSocket
 import android.util.Log
+import android.widget.Toast
+import de.uni.hannover.hci.mi.team6.covidcheckin.DefaultApplication
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantInfo.RestaurantInfoService
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -10,17 +16,19 @@ import java.nio.charset.Charset
 /**
  * Send message to the bonded device
  */
-class SendDataThread(socket: BluetoothSocket) : Thread() {
+class SendDataThread(socket: BluetoothSocket, activity: Activity) : Thread() {
     private var mSocket: BluetoothSocket? = null
     private var mInStream: InputStream? = null
     private var mOutStream: OutputStream? = null
     private val TAG = "SendThread"
+    private val mActivity = activity
 
-    //TODO bind visitor data
-    private val testInfo: String = "{'name':'max','salary':56000,'email':'max@max.de'}"
+    private val userPersonalDataService: CustomerPersonalDataService by lazy {
+        ServicesModule.localCustomerPersonalDataService
+    }
 
     init {
-        Log.d(TAG, "ConnectedThread: Starting.")
+        Log.d(TAG, "SendThread: Starting.")
 
         mSocket = socket
         var tmpIn: InputStream? = null
@@ -40,19 +48,28 @@ class SendDataThread(socket: BluetoothSocket) : Thread() {
 
         Log.d(TAG, "send: send Called.")
 
-        val bytes: ByteArray = testInfo.toByteArray(Charset.defaultCharset())
+        userPersonalDataService.currentUserPersonalData?.let {
+            val bytes: ByteArray = userPersonalDataService.currentUserPersonalData!!
+                .toCsvForm().toByteArray(Charset.defaultCharset())
 
-        //while (true) {
+            //while (true) {
             send(bytes)
             //sleep(200)
-        //}
-        Log.d(TAG, "send finish")
+            //}
+
+            Log.d(TAG, "send finish")
+            Log.d(TAG, "send " + userPersonalDataService.currentUserPersonalData!!.toCsvForm())
+        }
     }
 
     // send data to the remote device (restaurant device)
     fun send(bytes: ByteArray?) {
         val text = String(bytes!!, Charset.defaultCharset())
         Log.d(TAG, "send: Writing to outputstream: $text")
+        mActivity.runOnUiThread(Runnable {
+            Toast.makeText(mActivity, "Info sent: "+text, Toast.LENGTH_SHORT).show()
+        })
+
         try {
             mOutStream?.write(bytes)
         } catch (e: IOException) {

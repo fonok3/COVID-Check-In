@@ -19,6 +19,7 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.model.RestaurantInfo
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import org.altbeacon.beacon.*
 import java.util.*
+import android.util.Log
 
 
 class VisitorBeaconService : Service(), BeaconConsumer {
@@ -33,6 +34,7 @@ class VisitorBeaconService : Service(), BeaconConsumer {
     override fun onCreate() {
         super.onCreate()
         beaconManager = BeaconManager.getInstanceForApplication(this)
+        beaconManager.setForegroundBetweenScanPeriod(50000L);
         beaconManager.bind(this)
     }
 
@@ -77,14 +79,16 @@ class VisitorBeaconService : Service(), BeaconConsumer {
             ) {
                 it.getOrNull()?.let { restaurant ->
                     notificationTest(restaurant)
+                    stopSelf()
 
                     //TODO das könnte man mit sicherheit schöner lösen
                     val intent = Intent(this, EnterRestaurantActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                    intent.putExtra("DEVICE_NAME", restaurant.name);
+                    Log.d("VisitBeacon", restaurant.name)
                     startActivity(intent)
 
-                    Toast.makeText(applicationContext, "Restaurant betreten", Toast.LENGTH_LONG)
-                        .show()
+                    Toast.makeText(applicationContext, "Restaurant betreten", Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -148,11 +152,13 @@ class VisitorBeaconService : Service(), BeaconConsumer {
             Intent(
                 this,
                 EnterRestaurantActivity::class.java
-            ).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            }
+            ).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+
+        intent.putExtra("DEVICE_NAME", restaurant.name);
+        Log.d("NotiTest", restaurant.name)
+
         val pendingIntent: PendingIntent =
-            PendingIntent.getActivity(DefaultApplication.context, 0, intent, 0)
+            PendingIntent.getActivity(DefaultApplication.context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
         val builder = NotificationCompat.Builder(DefaultApplication.context, CHANNEL_ID)
 
@@ -163,7 +169,7 @@ class VisitorBeaconService : Service(), BeaconConsumer {
             .setAutoCancel(true)
             .setStyle(
                 NotificationCompat.BigTextStyle()
-                    .bigText("Du hast das Restaurant ${restaurant.name} betreten. Möchtest du automatisch deine Daten übertragen?")//TODO Dynamisch den Restaurantnamen übernehmen
+                    .bigText("Du hast das Restaurant ${restaurant.name} betreten. Möchtest du automatisch deine Daten übertragen?")
             )
 
         with(NotificationManagerCompat.from(DefaultApplication.context)) {
