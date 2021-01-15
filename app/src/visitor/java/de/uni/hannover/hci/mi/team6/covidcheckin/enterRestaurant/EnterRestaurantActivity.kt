@@ -2,6 +2,7 @@ package de.uni.hannover.hci.mi.team6.covidcheckin.enterRestaurant
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.widget.Button
 import android.widget.TextView
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer.BluetoothDataSender
 import de.uni.hannover.hci.mi.team6.covidcheckin.checkin.CheckinSuccessActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 
@@ -48,12 +50,19 @@ class EnterRestaurantActivity : AppCompatActivity() {
             t.show()
         }
 
-        val restaurantName = "Francesca & Fratelli" //TODO set correct restaurantName
+        Log.d("Enter Restaurant", "Enter " + intent.getStringExtra("DEVICE_NAME"))
+        val restaurantName = intent.getStringExtra("DEVICE_NAME")
         restaurantInfoView.text =
             resources.getString(R.string.ask_for_data_transmission, restaurantName)
 
         yesButton.setOnClickListener {
             val intent = Intent(this, CheckinSuccessActivity::class.java)
+
+            val restaurantName = getIntent().getStringExtra("DEVICE_NAME")
+            intent.putExtra("DEVICE_NAME", restaurantName)
+            Log.d("Enter Restaurant", "Enter $restaurantName")
+            restaurantName?.let { it1 -> BluetoothDataSender(this, it1).start() }
+
             startActivity(intent)
         }
         noButton.setOnClickListener {

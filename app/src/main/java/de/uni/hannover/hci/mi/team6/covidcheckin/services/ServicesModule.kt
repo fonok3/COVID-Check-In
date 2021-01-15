@@ -16,12 +16,12 @@ object ServicesModule {
     const val beaconServiceID = "2f234454-cf6d-4a0f-adf2-f4911ba9ffa6"
 
     /**
-     * HardCoded for now. TODO: Generate new Major/Minor combination not already in use.
+     * HardCoded for now.
      */
     const val beaconMajor: String = "1"
 
     /**
-     * HardCoded for now. TODO: Generate new Major/Minor combination not already in use.
+     * HardCoded for now. 
      */
     const val beaconMinor: String = "2"
 

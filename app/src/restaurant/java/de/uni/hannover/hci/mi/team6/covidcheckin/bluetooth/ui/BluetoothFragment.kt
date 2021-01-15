@@ -1,8 +1,10 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui
 
 import android.animation.ObjectAnimator
+import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,8 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.beacon.RestaurantBeacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer.BluetoothDataReceiver
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantInfo.RestaurantInfoService
 import de.uni.hannover.hci.mi.team6.covidcheckin.visitorManualContactForm.VisitorManualContactFormActivity
 import kotlinx.android.synthetic.main.bluetooth_fragment.animationInner
 import kotlinx.android.synthetic.main.bluetooth_fragment.animationOuter
@@ -21,6 +25,10 @@ import kotlinx.android.synthetic.restaurant.bluetooth_fragment.*
 class BluetoothFragment : Fragment() {
 
     private var bltReceiver: BluetoothDataReceiver? = null
+    private val restaurantDataService: RestaurantInfoService by lazy {
+        ServicesModule.localRestaurantDataService
+    }
+
 
     companion object {
         fun newInstance() = BluetoothFragment()
@@ -77,9 +85,15 @@ class BluetoothFragment : Fragment() {
 
                 RestaurantBeacon.start()
 
-                // start listening to visitor device
-                bltReceiver = BluetoothDataReceiver()
-                bltReceiver!!.start()
+                restaurantDataService.restaurantInfo?.name.let {
+                    // set device name to restaurant name
+                    BluetoothAdapter.getDefaultAdapter().name = it
+                    Log.d("BLTName", it + "- " + BluetoothAdapter.getDefaultAdapter().name)
+
+                    // start listening to visitor device
+                    bltReceiver = BluetoothDataReceiver()
+                    bltReceiver!!.start()
+                }
             }
         }
     }

@@ -23,29 +23,33 @@ class FirebaseRestaurantsInfoService : RestaurantsInfoService {
 
     override fun getInfoForRestaurant(beacon: Beacon, result: (Result<RestaurantInfo>) -> Unit) {
         db.collection("restaurants")
-            // Todo: does not work
+            .whereEqualTo("beacon_id", beacon.id)
             //.whereEqualTo("beacon.major", beacon.major)
             //.whereEqualTo("beacon.minor", beacon.minor)
-            .get().addOnSuccessListener { it ->
-                it.documents.firstOrNull()?.let { restaurant ->
+            .get().addOnSuccessListener { d ->
+                // get document with latest timestamp
+                val latest = d.documents
+                    .sortedByDescending { it.data!!["timestamp"] as Long}.take(1)
+
+                latest.firstOrNull()?.let { restaurant ->
                     result(
                         Result.success(
                             RestaurantInfo(
                                 restaurant.data!!["name"] as String,
                                 Beacon(
                                     ServicesModule.beaconServiceID,
-                                    restaurant.data!!["beacon.major"] as String,
-                                    restaurant.data!!["beacon.minor"] as String
+                                    restaurant.data!!["beacon_major"] as String,
+                                    restaurant.data!!["beacon_minor"] as String
                                 ),
                                 Address(
-                                    restaurant.data!!["address.street"] as String,
-                                    restaurant.data!!["address.streetNumber"] as String,
-                                    restaurant.data!!["address.zipCode"] as Int,
-                                    restaurant.data!!["address.city"] as String
+                                    restaurant.data!!["address_street"] as String,
+                                    restaurant.data!!["address_streetNumber"] as String,
+                                    restaurant.data!!["address_zipCode"] as Long,
+                                    restaurant.data!!["address_city"] as String
                                 ),
                                 Person(
-                                    restaurant.data!!["owner.firstName"] as String,
-                                    restaurant.data!!["owner.lastName"] as String
+                                    restaurant.data!!["owner_firstName"] as String,
+                                    restaurant.data!!["owner_lastName"] as String
                                 )
                             )
                         )
@@ -58,15 +62,15 @@ class FirebaseRestaurantsInfoService : RestaurantsInfoService {
     override fun saveRestaurantInfo(restaurantInfo: RestaurantInfo) {
         val restaurant: Map<String, Any> = hashMapOf(
             "name" to restaurantInfo.name,
-            "address.street" to restaurantInfo.address.street,
-            "address.streetNumber" to restaurantInfo.address.streetNumber,
-            "address.zipCode" to restaurantInfo.address.zipCode,
-            "address.city" to restaurantInfo.address.city,
-            "beacon.id" to restaurantInfo.beacon.id,
-            "beacon.major" to restaurantInfo.beacon.major,
-            "beacon.minor" to restaurantInfo.beacon.minor,
-            "owner.firstName" to restaurantInfo.owner.firstName,
-            "owner.lastName" to restaurantInfo.owner.lastName,
+            "address_street" to restaurantInfo.address.street,
+            "address_streetNumber" to restaurantInfo.address.streetNumber,
+            "address_zipCode" to restaurantInfo.address.zipCode,
+            "address_city" to restaurantInfo.address.city,
+            "beacon_id" to restaurantInfo.beacon.id,
+            "beacon_major" to restaurantInfo.beacon.major,
+            "beacon_minor" to restaurantInfo.beacon.minor,
+            "owner_firstName" to restaurantInfo.owner.firstName,
+            "owner_lastName" to restaurantInfo.owner.lastName,
             "timestamp" to System.currentTimeMillis()
         )
 

@@ -1,14 +1,13 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.checkin
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import kotlinx.android.synthetic.visitor.checkin_success_layout.*
 
 class CheckinSuccessActivity : AppCompatActivity() {
-
-    private val restaurantName = "Francesca & Fratelli" //TODO Namen dynamisch anpassen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +19,10 @@ class CheckinSuccessActivity : AppCompatActivity() {
             toast.show()
         }
 
-        tv_restaurant_name.text = restaurantName;
+        val name = intent.getStringExtra("DEVICE_NAME")
+        Log.d("CheckSuccess", "Check")
+        Log.d("CheckSuccess", "" + name)
+
+        tv_restaurant_name.text = name;
     }
 }
