@@ -8,6 +8,8 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.DefaultApplication
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantInfo.RestaurantInfoService
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -49,8 +51,9 @@ class SendDataThread(socket: BluetoothSocket, activity: Activity) : Thread() {
         Log.d(TAG, "send: send Called.")
 
         userPersonalDataService.currentUserPersonalData?.let {
-            val bytes: ByteArray = userPersonalDataService.currentUserPersonalData!!
-                .toCsvForm().toByteArray(Charset.defaultCharset())
+            val bytes: ByteArray =
+                Json.encodeToString(userPersonalDataService.currentUserPersonalData!!)
+                    .toByteArray(Charset.defaultCharset())
 
             //while (true) {
             send(bytes)
@@ -58,7 +61,10 @@ class SendDataThread(socket: BluetoothSocket, activity: Activity) : Thread() {
             //}
 
             Log.d(TAG, "send finish")
-            Log.d(TAG, "send " + userPersonalDataService.currentUserPersonalData!!.toCsvForm())
+            Log.d(
+                TAG,
+                "send " + Json.encodeToString(userPersonalDataService.currentUserPersonalData!!)
+            )
         }
     }
 

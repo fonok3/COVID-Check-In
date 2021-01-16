@@ -2,6 +2,10 @@ package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer
 
 import android.bluetooth.BluetoothSocket
 import android.util.Log
+import de.uni.hannover.hci.mi.team6.covidcheckin.model.CustomerPersonalData
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -41,6 +45,11 @@ class ReceiveDataThread(socket: BluetoothSocket) : Thread() {
                 val visitor_info = String(buffer, 0, bytes)
                 //TODO save incoming visitor info in database
                 Log.d(TAG, "InputStream: $visitor_info")
+                ServicesModule.visitorDatabaseService.enterVisitor(
+                    Json.decodeFromString(
+                        visitor_info
+                    )
+                )
 
             } catch (e: IOException) {
                 Log.e(TAG, "write: Error reading Input Stream. " + e.message)
