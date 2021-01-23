@@ -1,13 +1,11 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer
 
-import android.app.Activity
 import android.bluetooth.BluetoothSocket
 import android.util.Log
 import android.widget.Toast
-import de.uni.hannover.hci.mi.team6.covidcheckin.DefaultApplication
+import de.uni.hannover.hci.mi.team6.covidcheckin.enterRestaurant.EnterRestaurantActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
-import de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantInfo.RestaurantInfoService
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
@@ -16,7 +14,7 @@ import java.nio.charset.Charset
 /**
  * Send message to the bonded device
  */
-class SendDataThread(socket: BluetoothSocket, activity: Activity) : Thread() {
+class SendDataThread(socket: BluetoothSocket, activity: EnterRestaurantActivity) : Thread() {
     private var mSocket: BluetoothSocket? = null
     private var mInStream: InputStream? = null
     private var mOutStream: OutputStream? = null
@@ -67,9 +65,10 @@ class SendDataThread(socket: BluetoothSocket, activity: Activity) : Thread() {
         val text = String(bytes!!, Charset.defaultCharset())
         Log.d(TAG, "send: Writing to outputstream: $text")
         mActivity.runOnUiThread(Runnable {
-            Toast.makeText(mActivity, "Info sent: "+text, Toast.LENGTH_SHORT).show()
-        })
+            Toast.makeText(mActivity, "Info sent: $text", Toast.LENGTH_SHORT).show()
 
+        })
+        mActivity.goNextActivity()
         try {
             mOutStream?.write(bytes)
         } catch (e: IOException) {
