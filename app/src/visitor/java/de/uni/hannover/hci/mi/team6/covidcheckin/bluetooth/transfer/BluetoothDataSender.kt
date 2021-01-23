@@ -1,9 +1,9 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer
 
-import android.app.Activity
 import android.util.Log
+import de.uni.hannover.hci.mi.team6.covidcheckin.enterRestaurant.EnterRestaurantActivity
 
-class BluetoothDataSender(activity: Activity, deviceName: String) {
+class BluetoothDataSender(activity: EnterRestaurantActivity, deviceName: String) {
 
     private val discoverThread: DiscoverThread = DiscoverThread(activity, deviceName)
 

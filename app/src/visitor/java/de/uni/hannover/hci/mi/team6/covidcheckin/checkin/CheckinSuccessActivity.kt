@@ -6,6 +6,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import kotlinx.android.synthetic.visitor.checkin_success_layout.*
+import androidx.core.content.ContextCompat.startActivity
+
+import android.content.Intent
+
+
+
 
 class CheckinSuccessActivity : AppCompatActivity() {
 
@@ -15,8 +21,10 @@ class CheckinSuccessActivity : AppCompatActivity() {
 
         // done button listener
         btn_done.setOnClickListener {
-            val toast = Toast.makeText(this, "Fertig button clicked", Toast.LENGTH_SHORT)
-            toast.show()
+            val intent = Intent(Intent.ACTION_MAIN)
+            intent.addCategory(Intent.CATEGORY_HOME)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
         }
 
         val name = intent.getStringExtra("DEVICE_NAME")

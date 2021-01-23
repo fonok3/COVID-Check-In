@@ -1,17 +1,21 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.snackbar.Snackbar
 import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.beacon.RestaurantBeacon
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.ui.BluetoothFragment
 import de.uni.hannover.hci.mi.team6.covidcheckin.exportsheet.ExportSheetFragment
-import de.uni.hannover.hci.mi.team6.covidcheckin.restaurantContactForm.RestaurantContactFormActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.permission.PermissionsActivity
+import de.uni.hannover.hci.mi.team6.covidcheckin.restaurantContactForm.RestaurantContactFormActivity
 import kotlinx.android.synthetic.main.bluetooth_activity.*
+
 
 class BluetoothActivity : AppCompatActivity() {
 
@@ -54,5 +58,13 @@ class BluetoothActivity : AppCompatActivity() {
             true
         }
         else -> false
+    }
+
+    fun showSnackbarForReceivedDaten(lastname: String) {
+        val snackbar = Snackbar
+            .make(mainLayout, "Daten von $lastname empfangen", Snackbar.LENGTH_INDEFINITE)
+        snackbar.setAction("OK") {
+           snackbar.dismiss()
+        }.show()
     }
 }

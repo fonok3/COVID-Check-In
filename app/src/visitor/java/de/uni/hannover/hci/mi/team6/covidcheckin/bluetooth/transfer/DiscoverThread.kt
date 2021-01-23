@@ -1,6 +1,5 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer
 
-import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.content.BroadcastReceiver
@@ -8,9 +7,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.util.Log
-import java.io.IOException
+import de.uni.hannover.hci.mi.team6.covidcheckin.enterRestaurant.EnterRestaurantActivity
 
-class DiscoverThread(activity: Activity, deviceName: String) : Thread() {
+class DiscoverThread(activity: EnterRestaurantActivity, deviceName: String) : Thread() {
     private val mActivity = activity
     private val mDeviceName = deviceName
     private var mConnectThread: ConnectThread? = null
