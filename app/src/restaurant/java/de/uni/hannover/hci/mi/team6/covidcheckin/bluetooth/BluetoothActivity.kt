@@ -62,7 +62,7 @@ class BluetoothActivity : AppCompatActivity() {
 
     fun showSnackbarForReceivedDaten(lastname: String) {
         val snackbar = Snackbar
-            .make(mainLayout, "Daten von $lastname empfangen", Snackbar.LENGTH_LONG)
+            .make(mainLayout, "Daten von $lastname empfangen", Snackbar.LENGTH_INDEFINITE)
         snackbar.setAction("OK") {
            snackbar.dismiss()
         }.show()

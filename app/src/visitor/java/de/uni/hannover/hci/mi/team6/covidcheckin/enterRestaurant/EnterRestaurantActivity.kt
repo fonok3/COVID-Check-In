@@ -61,8 +61,8 @@ class EnterRestaurantActivity : AppCompatActivity() {
 
         yesButton.setOnClickListener {
             progressCircle.visibility = View.VISIBLE
-            yes_button.visibility = View.GONE
-            no_button.visibility = View.GONE
+            yes_button.visibility = View.INVISIBLE
+            no_button.visibility = View.INVISIBLE
             restaurantName?.let { it1 -> BluetoothDataSender(this, it1).start() }
         }
         noButton.setOnClickListener {
