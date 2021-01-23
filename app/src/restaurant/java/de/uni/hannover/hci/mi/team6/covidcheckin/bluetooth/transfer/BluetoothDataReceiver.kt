@@ -1,8 +1,10 @@
 package de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.transfer
 
-class BluetoothDataReceiver {
+import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 
-    private val acceptThread: AcceptConnectionThread = AcceptConnectionThread()
+class BluetoothDataReceiver(activity: BluetoothActivity) {
+
+    private val acceptThread: AcceptConnectionThread = AcceptConnectionThread(activity)
 
     fun start() {
         acceptThread.start()

@@ -24,7 +24,7 @@ import java.util.*
  */
 class ExportSheetFragment : BottomSheetDialogFragment() {
 
-    private val healthDeptMail = "gesundheitsamt@email.de"
+    private val healthDeptMail = "coronavirus@region-hannover.de"
 
     override fun onCreateView(
         inflater: LayoutInflater,

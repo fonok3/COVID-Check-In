@@ -16,6 +16,7 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
 import kotlinx.android.synthetic.visitor.fragment_contact_form.*
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.ShapeDrawable
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.customerPersonalData.CustomerPersonalDataService
 
 /**
  * This fragment will be added to the activity contactFormActivity. The user will give his data as an input the the data will be
@@ -24,6 +25,11 @@ import android.graphics.drawable.ShapeDrawable
  * */
 
 class ContactFormFragment : Fragment() {
+
+    private val userPersonalDataService: CustomerPersonalDataService by lazy {
+        ServicesModule.localCustomerPersonalDataService
+    }
+
     companion object {
         fun newInstance() = ContactFormFragment()
     }
@@ -39,6 +45,14 @@ class ContactFormFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
 
+
+        this.editText_Vorname.setText(userPersonalDataService.currentUserPersonalData!!.firstName)
+        this.editText_Nachname.setText(userPersonalDataService.currentUserPersonalData!!.lastName)
+        this.editText_strasse.setText(userPersonalDataService.currentUserPersonalData!!.street)
+        this.editText_hausnummer.setText(userPersonalDataService.currentUserPersonalData!!.streetNumber)
+        this.editText_plz.setText(userPersonalDataService.currentUserPersonalData!!.zipCode)
+        this.editText_stadt.setText(userPersonalDataService.currentUserPersonalData!!.city)
+        this.editText_telefone.setText(userPersonalDataService.currentUserPersonalData!!.phoneNumber)
 
 
         weiter_button.setOnClickListener {

@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.util.Log
+import de.uni.hannover.hci.mi.team6.covidcheckin.enterRestaurant.EnterRestaurantActivity
 import java.io.IOException
 import java.util.*
 
@@ -12,7 +13,7 @@ import java.util.*
  * Make a bluetooth connection to the given device
  * When connected, call the SendThread to send message
  */
-class ConnectThread (macAddress: String, activity: Activity) : Thread() {
+class ConnectThread(macAddress: String, activity: EnterRestaurantActivity) : Thread() {
 
     private var mSocket: BluetoothSocket? = null
     private val TAG = "ConnectThread"

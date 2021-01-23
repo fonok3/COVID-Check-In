@@ -87,8 +87,6 @@ class VisitorBeaconService : Service(), BeaconConsumer {
                     intent.putExtra("DEVICE_NAME", restaurant.name);
                     Log.d("VisitBeacon", restaurant.name)
                     startActivity(intent)
-
-                    Toast.makeText(applicationContext, "Restaurant betreten", Toast.LENGTH_LONG).show()
                 }
             }
         }

@@ -13,6 +13,7 @@ import de.uni.hannover.hci.mi.team6.covidcheckin.R
 import de.uni.hannover.hci.mi.team6.covidcheckin.bluetooth.BluetoothActivity
 import de.uni.hannover.hci.mi.team6.covidcheckin.model.*
 import de.uni.hannover.hci.mi.team6.covidcheckin.services.ServicesModule
+import de.uni.hannover.hci.mi.team6.covidcheckin.services.restaurantInfo.RestaurantInfoService
 import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
 
 
@@ -24,6 +25,11 @@ import kotlinx.android.synthetic.restaurant.fragment_contact_form.*
 
 @Suppress("DEPRECATION")
 class RestaurantContactFormFragment : Fragment() {
+
+    private val userPersonalDataService: RestaurantInfoService by lazy {
+        ServicesModule.localRestaurantDataService
+    }
+
     companion object {
         fun newInstance() = RestaurantContactFormFragment()
     }
@@ -39,6 +45,16 @@ class RestaurantContactFormFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
 
+        this.editText_resturantname.setText(userPersonalDataService.restaurantInfo!!.name)
+        this.editText_OwnerVorname.setText(userPersonalDataService.restaurantInfo!!.owner.firstName)
+        this.editText_OwnerNachname.setText(userPersonalDataService.restaurantInfo!!.owner.lastName)
+        this.editText_strasse.setText(userPersonalDataService.restaurantInfo!!.address.street)
+        this.editText_hausnummer.setText(userPersonalDataService.restaurantInfo!!.address.streetNumber)
+        this.editText_plz.setText(userPersonalDataService.restaurantInfo!!.address.zipCode.toString())
+        this.editText_stadt.setText(userPersonalDataService.restaurantInfo!!.address.city)
+
+        /** So why is the phone number not saved anywhere ?*/
+        //this.editText_telefone.setText(userPersonalDataService.restaurantInfo!!.)
 
 
         weiter_button.setOnClickListener {
