@@ -91,7 +91,7 @@ class BluetoothFragment : Fragment() {
                     Log.d("BLTName", it + "- " + BluetoothAdapter.getDefaultAdapter().name)
 
                     // start listening to visitor device
-                    bltReceiver = BluetoothDataReceiver()
+                    bltReceiver = BluetoothDataReceiver((this.activity as BluetoothActivity))
                     bltReceiver!!.start()
                 }
             }
