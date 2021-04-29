@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
 import android.util.Log
+import android.widget.Toast
 import de.uni.hannover.hci.mi.team6.covidcheckin.enterRestaurant.EnterRestaurantActivity
 import java.io.IOException
 import java.util.*
@@ -42,7 +43,6 @@ class ConnectThread(macAddress: String, activity: EnterRestaurantActivity) : Thr
             Log.e(TAG, "ConnectThread: Could not create InsecureRfcommSocket " + e.message)
         }
         mSocket = tmp
-
         // Make a connection to the BluetoothSocket
         try {
             // This is a blocking call and will only return on a

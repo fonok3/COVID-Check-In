@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.util.Log
+import android.widget.Toast
 import de.uni.hannover.hci.mi.team6.covidcheckin.enterRestaurant.EnterRestaurantActivity
 
 class DiscoverThread(activity: EnterRestaurantActivity, deviceName: String) : Thread() {
@@ -18,6 +19,13 @@ class DiscoverThread(activity: EnterRestaurantActivity, deviceName: String) : Th
     init {
         var mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
         Log.d(TAG, "Init")
+
+        mActivity.runOnUiThread(Runnable {
+            Toast.makeText(mActivity, "Info sent", Toast.LENGTH_SHORT).show()
+
+        })
+        mActivity.goNextActivity()
+
         if (mBluetoothAdapter.isDiscovering) {
             mBluetoothAdapter.cancelDiscovery()
             mBluetoothAdapter.startDiscovery()

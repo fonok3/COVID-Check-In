@@ -46,13 +46,13 @@ class ContactFormFragment : Fragment() {
 
 
 
-        this.editText_Vorname.setText(userPersonalDataService.currentUserPersonalData!!.firstName)
-        this.editText_Nachname.setText(userPersonalDataService.currentUserPersonalData!!.lastName)
-        this.editText_strasse.setText(userPersonalDataService.currentUserPersonalData!!.street)
-        this.editText_hausnummer.setText(userPersonalDataService.currentUserPersonalData!!.streetNumber)
-        this.editText_plz.setText(userPersonalDataService.currentUserPersonalData!!.zipCode)
-        this.editText_stadt.setText(userPersonalDataService.currentUserPersonalData!!.city)
-        this.editText_telefone.setText(userPersonalDataService.currentUserPersonalData!!.phoneNumber)
+//        this.editText_Vorname.setText(userPersonalDataService.currentUserPersonalData!!.firstName)
+//        this.editText_Nachname.setText(userPersonalDataService.currentUserPersonalData!!.lastName)
+//        this.editText_strasse.setText(userPersonalDataService.currentUserPersonalData!!.street)
+//        this.editText_hausnummer.setText(userPersonalDataService.currentUserPersonalData!!.streetNumber)
+//        this.editText_plz.setText(userPersonalDataService.currentUserPersonalData!!.zipCode)
+//        this.editText_stadt.setText(userPersonalDataService.currentUserPersonalData!!.city)
+//        this.editText_telefone.setText(userPersonalDataService.currentUserPersonalData!!.phoneNumber)
 
 
         weiter_button.setOnClickListener {
