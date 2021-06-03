@@ -45,13 +45,13 @@ class RestaurantContactFormFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
 
-//        this.editText_resturantname.setText(userPersonalDataService.restaurantInfo!!.name)
-//        this.editText_OwnerVorname.setText(userPersonalDataService.restaurantInfo!!.owner.firstName)
-//        this.editText_OwnerNachname.setText(userPersonalDataService.restaurantInfo!!.owner.lastName)
-//        this.editText_strasse.setText(userPersonalDataService.restaurantInfo!!.address.street)
-//        this.editText_hausnummer.setText(userPersonalDataService.restaurantInfo!!.address.streetNumber)
-//        this.editText_plz.setText(userPersonalDataService.restaurantInfo!!.address.zipCode.toString())
-//        this.editText_stadt.setText(userPersonalDataService.restaurantInfo!!.address.city)
+        this.editText_resturantname.setText(userPersonalDataService.restaurantInfo?.name)
+        this.editText_OwnerVorname.setText(userPersonalDataService.restaurantInfo?.owner?.firstName)
+        this.editText_OwnerNachname.setText(userPersonalDataService.restaurantInfo?.owner?.lastName)
+        this.editText_strasse.setText(userPersonalDataService.restaurantInfo?.address?.street)
+        this.editText_hausnummer.setText(userPersonalDataService.restaurantInfo?.address?.streetNumber)
+        this.editText_plz.setText( if(userPersonalDataService.restaurantInfo?.address?.zipCode != null) userPersonalDataService.restaurantInfo?.address?.zipCode.toString() else "")
+        this.editText_stadt.setText(userPersonalDataService.restaurantInfo?.address?.city)
 
         /** So why is the phone number not saved anywhere ?*/
         //this.editText_telefone.setText(userPersonalDataService.restaurantInfo!!.)
