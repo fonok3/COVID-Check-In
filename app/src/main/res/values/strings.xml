@@ -1,3 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">COVID Checkin</string>
+    <string name="mainFragment">MainFragment</string>
+    <string name="welcomeToApp">Welcome to</string>
+    <string name="permissions_title">Permissions</string>
+    <string name="permissions_description">For the app working in the expected way, we need the following permissions:</string>
+    <string name="notifications_permission_title">Notifications</string>
+    <string name="notifications_permission_description">Get automatic notifications when entering a restaurant.</string>
+    <string name="location_permission_title">Location</string>
+    <string name="location_permission_description">Automatic recognition when entering a restaurant.</string>
+    <string name="bluetooth_permission_title">Bluetooth</string>
+    <string name="bluetooth_permission_description">Transmit your data to the restaurant. Your data will automatically be deleted after two weeks.</string>
+    <string name="enable">Enable</string>
+    <string name="go_on">Continue</string>
+    <string name="channel_name">Restaurantdetection</string>
+    <string name="channel_description">Covid Checkin Restaurant Detection Notifications</string>
+    <string name="ask_for_data_transmission">Sollen die untenstehenden Daten an das Restaurant \"%1$s\" übertragen werden?</string>
+    <string name="no_button_text">NEIN</string>
+    <string name="yes_button_text">JA</string>
+    <string name="str_checkin_success">Erfolgreich registriert</string>
+    <string name="str_tks_checkin">Vielen Dank für Ihren Besuch im</string>
+    <string name="str_checkin_done">Fertig</string>
+    <string name="str_export_e_mail">E-Mail ans Gesundheitsamt</string>
+    <string name="str_export_save">Auf Gerät speichern</string>
+    <string name="str_export_data">Registerdaten weitergeben</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="weiter">Weiter</string>
+    <string name="startscreen_fragment_header">Geben Sie Bitte Ihre Kontakt Daten Ein</string>
+    <string name="vorname">Vorname</string>
+    <string name="nachname">Nachname</string>
+    <string name="strasse">Straße</string>
+    <string name="hausnummer">Hausnummer</string>
+    <string name="stadt">Stadt</string>
+    <string name="plz">PLZ</string>
+    <string name="telefone">Telefonnummer</string>
+    <string name="datenschutzerklaerung"><![CDATA[Ich habe die Datenschutzerklärung gelesen und erkläre mich damit einverstanden, dass meine Daten im Rahmen dieses Projekts verwendet werden können.]]></string>
+    <string name="manual_search">Manual Search</string>
+    <string name="desc">Desc</string>
+    <string name="info">Info</string>
+    <string name="edit">Edit</string>
+    <string name="sucheAktivieren">Auf Los geht`s los!</string>
+    <string name="todo">TODO</string>
+    <string name="localsaving_info">Ihre Informationen werden lokal gespeichert.</string>
+    <string name="export">Export</string>
 </resources>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">COVID Check-In: Restaurant Edition</string>
+    <string name="restaurant_name">Restaurant Name</string>
+    <string name="besitzer_name">Besitzer Nachname,Vorname</string>
+</resources>
